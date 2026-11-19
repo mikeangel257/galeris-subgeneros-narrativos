@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Explora los ocho subgéneros narrativos a través de películas y cuentos.">
+
+    <title>Explorar | Galería de Subgéneros Narrativos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080808;
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+
+            padding: 20px 6%;
+            background: rgba(8, 8, 8, 0.88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.09);
+
+            transition: padding 0.3s ease;
+        }
+
+        header.compacto {
+            padding-top: 13px;
+            padding-bottom: 13px;
+            background: rgba(8, 8, 8, 0.97);
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 900;
+            color: #e50914;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #d5d5d5;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.activo {
+            color: #ff2633;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 29px;
+            cursor: pointer;
+        }
+
+        /* PRESENTACIÓN */
+        .bienvenida {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            isolation: isolate;
+
+            padding: 150px 6% 85px;
+            overflow: hidden;
+        }
+
+        .bienvenida::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+
+            background: url("portada-principal.jpg")
+                        center 38% / cover no-repeat;
+            opacity: 0.50;
+        }
+
+        .bienvenida::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                90deg,
+                rgba(0,0,0,0.95) 0%,
+                rgba(0,0,0,0.68) 55%,
+                rgba(0,0,0,0.30) 100%
+            );
+        }
+
+        .bienvenida-contenido {
+            max-width: 850px;
+            animation: aparecer 1s ease both;
+        }
+
+        .etiqueta {
+            color: #ff3945;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+
+        .bienvenida h1 {
+            font-size: clamp(38px, 5.5vw, 76px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .bienvenida h1 span {
+            color: #e50914;
+        }
+
+        .bienvenida p {
+            max-width: 650px;
+            color: #dedede;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* CONTENIDO DE LA GALERÍA */
+        main {
+            padding: 45px 6% 90px;
+        }
+
+        .encabezado-seccion {
+            margin-bottom: 32px;
+        }
+
+        .encabezado-seccion h2 {
+            font-size: clamp(26px, 3vw, 38px);
+            margin-bottom: 12px;
+        }
+
+        .encabezado-seccion h2 span {
+            color: #e50914;
+        }
+
+        .encabezado-seccion p {
+            color: #aaa;
+            font-size: 15px;
+        }
+
+        /* CUADRÍCULA */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+        }
+
+        /* TARJETAS */
+        .tarjeta {
+            position: relative;
+            min-height: 340px;
+            border-radius: 16px;
+            overflow: hidden;
+            isolation: isolate;
+
+            background: #181818;
+            border: 1px solid rgba(255,255,255,0.10);
+
+            display: flex;
+            align-items: flex-end;
+
+            transition:
+                transform 0.4s ease,
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+            border-color: rgba(229,9,20,0.65);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.65),
+                0 0 25px rgba(229,9,20,0.15);
+        }
+
+        .tarjeta img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+
+            transition: transform 0.7s ease;
+        }
+
+        .tarjeta:hover img {
+            transform: scale(1.09);
+        }
+
+        .tarjeta::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.03) 10%,
+                rgba(0,0,0,0.42) 45%,
+                rgba(0,0,0,0.96) 100%
+            );
+        }
+
+        .tarjeta-contenido {
+            padding: 30px;
+            width: 100%;
+        }
+
+        .categoria {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: #ff4b55;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .tarjeta h3 {
+            font-size: clamp(24px, 2.5vw, 35px);
+            margin-bottom: 12px;
+        }
+
+        .tarjeta p {
+            color: #dedede;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            max-width: 480px;
+        }
+
+        .boton-explorar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 13px 24px;
+            border-radius: 8px;
+            background: #e50914;
+            color: white;
+
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+
+            transition:
+                background 0.3s,
+                transform 0.3s;
+        }
+
+        .boton-explorar:hover {
+            background: #ff2633;
+            transform: scale(1.05);
+        }
+
+        .boton-explorar:focus-visible,
+        nav a:focus-visible,
+        .menu-toggle:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 4px;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #101010;
+            padding: 35px 6%;
+            text-align: center;
+            border-top: 1px solid #292929;
+        }
+
+        footer h3 {
+            color: #e50914;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* ANIMACIONES */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tarjeta {
+            animation: aparecer 0.8s ease both;
+        }
+
+        /* TABLETAS */
+        @media (max-width: 900px) {
+            .galeria {
+                gap: 20px;
+            }
+
+            .tarjeta {
+                min-height: 320px;
+            }
+
+            .tarjeta-contenido {
+                padding: 22px;
+            }
+
+            nav {
+                gap: 14px;
+            }
+        }
+
+        /* CELULARES */
+        @media (max-width: 700px) {
+            header {
+                padding: 16px 5%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+
+                padding: 10px 5% 20px;
+                background: #111;
+                border-bottom: 1px solid #333;
+                max-height: 75vh;
+                overflow-y: auto;
+            }
+
+            nav.abierto {
+                display: flex;
+            }
+
+            nav a {
+                padding: 14px 8px;
+                border-bottom: 1px solid #252525;
+            }
+
+            .bienvenida {
+                min-height: 420px;
+                padding: 125px 5% 60px;
+            }
+
+            .bienvenida h1 {
+                font-size: 39px;
+            }
+
+            .bienvenida p {
+                font-size: 15px;
+            }
+
+            main {
+                padding: 40px 5% 65px;
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .tarjeta {
+                min-height: 350px;
+            }
+
+            .tarjeta-contenido {
+                padding: 24px;
+            }
+
+            .tarjeta h3 {
+                font-size: 29px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <header id="header">
+
+        <a href="index.html" class="logo">
+            NARRATIVA<span>+</span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Abrir menú de navegación"
+            aria-controls="menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="menu" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html" class="activo">Galería</a>
+            <a href="#subgeneros">Subgéneros</a>
+        </nav>
+
+    </header>
+
+    <!-- PRESENTACIÓN -->
+    <section class="bienvenida">
+
+        <div class="bienvenida-contenido">
+
+            <div class="etiqueta">
+                TU UNIVERSO DE HISTORIAS
+            </div>
+
+            <h1>
+                EXPLORA LOS
+                <span>SUBGÉNEROS</span>
+                NARRATIVOS
+            </h1>
+
+            <p>
+                Ocho mundos por descubrir.
+                Desde misterios policiacos hasta
+                aventuras extraordinarias.
+                Elige tu próximo universo y descubre
+                las películas y cuentos que lo representan.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- GALERÍA DE SUBGÉNEROS -->
+    <main id="subgeneros">
+
+        <div class="encabezado-seccion">
+            <h2>
+                ELIGE TU <span>HISTORIA</span>
+            </h2>
+
+            <p>
+                8 subgéneros · 16 películas · 8 obras literarias
+            </p>
+        </div>
+
+        <div class="galeria">
+
+            <!-- POLICIACO -->
+            <article class="tarjeta">
+                <img src="portada-policiaco.jpg"
+                     alt="Portada del subgénero policiaco"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">01 / MISTERIO</span>
+                    <h3>POLICIACO</h3>
+                    <p>
+                        Crímenes, investigaciones, pistas
+                        y secretos que esperan ser descubiertos.
+                    </p>
+                    <a href="policiaco.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- CIENCIA FICCIÓN -->
+            <article class="tarjeta">
+                <img src="ciencia-ficcion.jpg"
+                     alt="Portada de ciencia ficción"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">02 / FUTURO</span>
+                    <h3>CIENCIA FICCIÓN</h3>
+                    <p>
+                        Viajes espaciales, tecnología,
+                        mundos futuros y posibilidades
+                        más allá de nuestra imaginación.
+                    </p>
+                    <a href="ciencia-ficcion.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- COMEDIA -->
+            <article class="tarjeta">
+                <img src="portada-comedia.jpg"
+                     alt="Portada del subgénero comedia"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">03 / HUMOR</span>
+                    <h3>COMEDIA</h3>
+                    <p>
+                        Historias divertidas, situaciones
+                        inesperadas y personajes que
+                        nos hacen reír.
+                    </p>
+                    <a href="comedia.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- TERROR -->
+            <article class="tarjeta">
+                <img src="portada-terror.jpg"
+                     alt="Portada del subgénero terror"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">04 / SUSPENSO</span>
+                    <h3>TERROR</h3>
+                    <p>
+                        Enfréntate a tus miedos con
+                        relatos inquietantes, misterios
+                        oscuros y fenómenos sobrenaturales.
+                    </p>
+                    <a href="terror.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- FANTÁSTICO -->
+            <article class="tarjeta">
+                <img src="portada-fantastico.jpg"
+                     alt="Portada del subgénero fantástico"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">05 / MAGIA</span>
+                    <h3>FANTÁSTICO</h3>
+                    <p>
+                        Castillos, magia, criaturas
+                        extraordinarias y universos
+                        donde lo imposible se vuelve real.
+                    </p>
+                    <a href="fantastico.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- REALISTA -->
+            <article class="tarjeta">
+                <img src="portada.realista.jpg"
+                     alt="Portada del subgénero realista"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">06 / VIDA COTIDIANA</span>
+                    <h3>REALISTA</h3>
+                    <p>
+                        Historias humanas que reflejan
+                        los desafíos, emociones y
+                        experiencias de la vida real.
+                    </p>
+                    <a href="realista.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- HISTÓRICO -->
+            <article class="tarjeta">
+                <img src="portada-historico.jpg"
+                     alt="Portada del subgénero histórico"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">07 / PASADO</span>
+                    <h3>HISTÓRICO</h3>
+                    <p>
+                        Viaja a otras épocas y descubre
+                        historias ambientadas en
+                        acontecimientos del pasado.
+                    </p>
+                    <a href="historico.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+            <!-- AVENTURAS -->
+            <article class="tarjeta">
+                <img src="portada-aventuras.jpg"
+                     alt="Portada del subgénero aventuras"
+                     loading="lazy">
+
+                <div class="tarjeta-contenido">
+                    <span class="categoria">08 / EXPLORACIÓN</span>
+                    <h3>AVENTURAS</h3>
+                    <p>
+                        Explora lugares desconocidos,
+                        enfrenta grandes desafíos y
+                        vive viajes inolvidables.
+                    </p>
+                    <a href="aventuras.html"
+                       class="boton-explorar">
+                        ▶ EXPLORAR
+                    </a>
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <h3>NARRATIVA+</h3>
+
+        <p>
+            Galería de Subgéneros Narrativos
+        </p>
+
+        <p>
+            CECyTE 24 · Cuahuixmatlac, Tlaxcala
+        </p>
+
+        <p>
+            Proyecto educativo de literatura y cine
+        </p>
+    </footer>
+
+    <script>
+        const header = document.getElementById("header");
+        const menu = document.getElementById("menu");
+        const menuToggle = document.getElementById("menuToggle");
+
+        // CAMBIAR APARIENCIA DEL NAV AL DESPLAZARSE
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                header.classList.add("compacto");
+            } else {
+                header.classList.remove("compacto");
+            }
+        }, { passive: true });
+
+        // ABRIR Y CERRAR MENÚ EN CELULARES
+        menuToggle.addEventListener("click", function() {
+            const abierto = menu.classList.toggle("abierto");
+
+            menuToggle.setAttribute("aria-expanded", abierto);
+            menuToggle.setAttribute(
+                "aria-label",
+                abierto ? "Cerrar menú" : "Abrir menú de navegación"
+            );
+
+            menuToggle.textContent = abierto ? "✕" : "☰";
+        });
+
+        // CERRAR MENÚ AL SELECCIONAR UNA OPCIÓN
+        document.querySelectorAll("#menu a").forEach(function(enlace) {
+            enlace.addEventListener("click", function() {
+                menu.classList.remove("abierto");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Abrir menú de navegación"
+                );
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // CERRAR MENÚ CON ESCAPE
+        document.addEventListener("keydown", function(evento) {
+            if (evento.key === "Escape") {
+                menu.classList.remove("abierto");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            }
+        });
+    </script>
+
+</body>
+</html>

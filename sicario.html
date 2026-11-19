@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Ficha técnica, sinopsis y análisis narrativo de Sicario (2015).">
+
+    <title>Sicario | Narrativa+</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background: #080808;
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* MENÚ DE NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 22px;
+
+            padding: 19px 6%;
+            background: rgba(5,5,5,.88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,.09);
+
+            transition: padding .3s;
+        }
+
+        header.compacto {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background: rgba(5,5,5,.97);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: #e50914;
+            letter-spacing: -1px;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        nav a {
+            font-size: 13px;
+            font-weight: 600;
+            color: #d7d7d7;
+            transition: color .3s;
+        }
+
+        nav a:hover,
+        nav a.activo {
+            color: #ff3642;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 29px;
+            cursor: pointer;
+        }
+
+        /* PORTADA DE LA PELÍCULA */
+        .hero {
+            min-height: 90vh;
+            min-height: 90svh;
+            position: relative;
+            isolation: isolate;
+
+            display: flex;
+            align-items: center;
+            padding: 145px 7% 90px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+
+            background-image: url("sicario.jpg");
+            background-size: cover;
+            background-position: center 30%;
+            filter: blur(7px) brightness(.40);
+            transform: scale(1.08);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                90deg,
+                rgba(0,0,0,.95) 0%,
+                rgba(0,0,0,.75) 50%,
+                rgba(0,0,0,.30) 100%
+            );
+        }
+
+        .hero-contenido {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: minmax(210px, 340px) 1fr;
+            align-items: center;
+            gap: clamp(30px, 5vw, 80px);
+
+            animation: aparecer 1.2s ease both;
+        }
+
+        .poster-principal {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.75),
+                0 0 35px rgba(229,9,20,.12);
+            border: 1px solid rgba(255,255,255,.15);
+        }
+
+        .etiqueta {
+            color: #ff3b46;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(65px, 9vw, 125px);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+            text-shadow: 0 5px 20px #000;
+        }
+
+        .metadatos {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .metadatos span {
+            padding: 8px 13px;
+            border: 1px solid rgba(255,255,255,.20);
+            background: rgba(0,0,0,.40);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .hero-descripcion {
+            max-width: 650px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            padding: 16px 25px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            transition: transform .3s, background .3s;
+        }
+
+        .boton-rojo {
+            background: #e50914;
+            color: white;
+        }
+
+        .boton-rojo:hover {
+            background: #ff303c;
+            transform: translateY(-4px);
+        }
+
+        .boton-gris {
+            background: rgba(120,120,120,.45);
+            backdrop-filter: blur(10px);
+        }
+
+        .boton-gris:hover {
+            background: rgba(150,150,150,.65);
+            transform: translateY(-4px);
+        }
+
+        /* SECCIONES GENERALES */
+        .seccion {
+            padding: 75px 7%;
+        }
+
+        .seccion-alternativa {
+            background: #111;
+        }
+
+        .titulo-seccion {
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .titulo-seccion span {
+            color: #e50914;
+        }
+
+        /* FICHA TÉCNICA */
+        .ficha {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            max-width: 1100px;
+        }
+
+        .ficha-item {
+            padding: 22px;
+            background: #191919;
+            border: 1px solid #303030;
+            border-radius: 12px;
+            transition: border-color .3s, transform .3s;
+        }
+
+        .ficha-item:hover {
+            border-color: #e50914;
+            transform: translateY(-3px);
+        }
+
+        .ficha-item strong {
+            display: block;
+            color: #ff4650;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .ficha-item p {
+            font-size: 16px;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* SINOPSIS */
+        .texto {
+            max-width: 1000px;
+            color: #ccc;
+            font-size: 17px;
+            line-height: 2;
+        }
+
+        .texto p + p {
+            margin-top: 20px;
+        }
+
+        /* PERSONAJES */
+        .personajes {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .personaje {
+            padding: 28px;
+            background: #1a1a1a;
+            border: 1px solid #303030;
+            border-radius: 14px;
+            transition: transform .3s, border-color .3s;
+        }
+
+        .personaje:hover {
+            transform: translateY(-5px);
+            border-color: #e50914;
+        }
+
+        .personaje h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .actor {
+            color: #ff4650;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .personaje p:last-child {
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* ANÁLISIS */
+        .analisis {
+            max-width: 1000px;
+            background: linear-gradient(135deg, #1d1d1d, #111);
+            border-left: 5px solid #e50914;
+            border-radius: 12px;
+            padding: 35px;
+        }
+
+        .analisis p {
+            font-size: 17px;
+            color: #ddd;
+            line-height: 1.9;
+        }
+
+        .analisis ul {
+            margin-top: 22px;
+            padding-left: 22px;
+        }
+
+        .analisis li {
+            margin-bottom: 13px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+
+        /* NAVEGACIÓN INFERIOR */
+        .siguiente {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 50px 7%;
+            background: #151515;
+            border-top: 1px solid #303030;
+        }
+
+        .siguiente h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .siguiente p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        footer {
+            padding: 30px 7%;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        footer strong {
+            color: #e50914;
+        }
+
+        /* ANIMACIONES */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* TABLETAS */
+        @media (max-width: 1050px) {
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .personajes {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* CELULARES */
+        @media (max-width: 800px) {
+            header {
+                padding: 16px 5%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+
+                padding: 10px 5% 20px;
+                background: #111;
+                border-bottom: 1px solid #333;
+                max-height: 75vh;
+                overflow-y: auto;
+            }
+
+            nav.abierto {
+                display: flex;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 15px 8px;
+                border-bottom: 1px solid #292929;
+            }
+
+            .hero {
+                padding: 125px 6% 65px;
+            }
+
+            .hero-contenido {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .poster-principal {
+                max-width: 250px;
+                margin: auto;
+            }
+
+            .hero h1 {
+                font-size: 65px;
+            }
+
+            .metadatos,
+            .acciones {
+                justify-content: center;
+            }
+
+            .hero-descripcion {
+                font-size: 15px;
+            }
+
+            .seccion {
+                padding: 60px 6%;
+            }
+
+            .ficha {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .personajes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .acciones {
+                flex-direction: column;
+            }
+
+            .analisis {
+                padding: 23px;
+            }
+
+            .texto,
+            .analisis p {
+                font-size: 15px;
+            }
+
+            .siguiente {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN DEL SUBGÉNERO POLICIACO -->
+    <header id="header">
+
+        <a href="galeria.html" class="logo">
+            NARRATIVA<span>+</span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Abrir menú"
+            aria-controls="menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="menu" aria-label="Navegación policiaca">
+            <a href="galeria.html">Menú principal</a>
+            <a href="policiaco.html">Policiaco</a>
+            <a href="sicario.html" class="activo" aria-current="page">Sicario</a>
+            <a href="zodiac.html">Zodiac</a>
+            <a href="crimenes-calle-morgue.html">
+                Los crímenes de la calle Morgue
+            </a>
+        </nav>
+
+    </header>
+
+    <!-- PRESENTACIÓN DE LA PELÍCULA -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-contenido">
+
+                <img
+                    src="sicario.jpg"
+                    alt="Póster de la película Sicario"
+                    class="poster-principal">
+
+                <div class="hero-texto">
+
+                    <p class="etiqueta">
+                        POLICIACO · THRILLER CRIMINAL
+                    </p>
+
+                    <h1>SICARIO</h1>
+
+                    <div class="metadatos">
+                        <span>2015</span>
+                        <span>121 minutos</span>
+                        <span>Crimen / Drama / Suspenso</span>
+                    </div>
+
+                    <p class="hero-descripcion">
+                        Una agente del FBI se integra a una
+                        operación especial contra el narcotráfico
+                        en la frontera entre México y Estados Unidos.
+                        Pronto descubrirá que la búsqueda de justicia
+                        puede llevarla a un mundo de violencia,
+                        secretos y decisiones moralmente complejas.
+                    </p>
+
+                    <div class="acciones">
+
+                        <a href="#ficha"
+                           class="boton boton-rojo">
+                            ▶ VER FICHA TÉCNICA
+                        </a>
+
+                        <a href="policiaco.html"
+                           class="boton boton-gris">
+                            ← VOLVER A POLICIACO
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FICHA TÉCNICA -->
+        <section class="seccion" id="ficha">
+
+            <h2 class="titulo-seccion">
+                FICHA <span>TÉCNICA</span>
+            </h2>
+
+            <div class="ficha">
+
+                <div class="ficha-item">
+                    <strong>Título original</strong>
+                    <p>Sicario</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Año de estreno</strong>
+                    <p>2015</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Director</strong>
+                    <p>Denis Villeneuve</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Guionista</strong>
+                    <p>Taylor Sheridan</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>País de producción</strong>
+                    <p>Estados Unidos</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Duración</strong>
+                    <p>121 minutos</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Géneros cinematográficos</strong>
+                    <p>Crimen, drama y suspenso</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Reparto principal</strong>
+                    <p>
+                        Emily Blunt, Benicio del Toro
+                        y Josh Brolin
+                    </p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Fotografía</strong>
+                    <p>Roger Deakins</p>
+                </div>
+
+                <div class="ficha-item">
+                    <strong>Música</strong>
+                    <p>Jóhann Jóhannsson</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SINOPSIS -->
+        <section class="seccion seccion-alternativa">
+
+            <h2 class="titulo-seccion">
+                SINOPSIS <span>DE LA PELÍCULA</span>
+            </h2>
+
+            <div class="texto">
+
+                <p>
+                    Kate Macer es una agente del FBI que trabaja
+                    en operaciones contra el crimen organizado.
+                    Después de participar en un operativo
+                    relacionado con el narcotráfico, es invitada
+                    a formar parte de una misión especial
+                    dirigida por Matt Graver.
+                </p>
+
+                <p>
+                    Durante la operación conoce a Alejandro,
+                    un hombre misterioso que desempeña
+                    un papel fundamental en la lucha
+                    contra los cárteles.
+                    A medida que avanza la misión,
+                    Kate descubre que los métodos utilizados
+                    por sus compañeros no siempre respetan
+                    los principios legales y éticos
+                    que ella defiende.
+                </p>
+
+                <p>
+                    La película presenta una historia de
+                    tensión, violencia y conflictos morales
+                    en la que la protagonista debe enfrentar
+                    la diferencia entre hacer cumplir
+                    la ley y buscar resultados a cualquier costo.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- PERSONAJES -->
+        <section class="seccion">
+
+            <h2 class="titulo-seccion">
+                PERSONAJES <span>PRINCIPALES</span>
+            </h2>
+
+            <div class="personajes">
+
+                <article class="personaje">
+
+                    <h3>Kate Macer</h3>
+
+                    <p class="actor">
+                        Interpretada por Emily Blunt
+                    </p>
+
+                    <p>
+                        Agente del FBI comprometida con
+                        la justicia y el cumplimiento
+                        de la ley. Representa el conflicto
+                        entre los ideales y la realidad
+                        de las operaciones especiales.
+                    </p>
+
+                </article>
+
+                <article class="personaje">
+
+                    <h3>Alejandro Gillick</h3>
+
+                    <p class="actor">
+                        Interpretado por Benicio del Toro
+                    </p>
+
+                    <p>
+                        Hombre reservado y enigmático
+                        que participa en la operación.
+                        Sus motivaciones personales
+                        y sus métodos generan tensión
+                        a lo largo de la historia.
+                    </p>
+
+                </article>
+
+                <article class="personaje">
+
+                    <h3>Matt Graver</h3>
+
+                    <p class="actor">
+                        Interpretado por Josh Brolin
+                    </p>
+
+                    <p>
+                        Responsable de coordinar la misión
+                        especial. Es un personaje pragmático
+                        que prioriza los resultados
+                        de la operación.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ANÁLISIS NARRATIVO -->
+        <section class="seccion seccion-alternativa">
+
+            <h2 class="titulo-seccion">
+                RELACIÓN CON EL
+                <span>SUBGÉNERO POLICIACO</span>
+            </h2>
+
+            <div class="analisis">
+
+                <p>
+                    Aunque Sicario es principalmente
+                    un thriller criminal, presenta
+                    elementos característicos del
+                    subgénero policiaco: agentes
+                    encargados de investigar delitos,
+                    operaciones contra organizaciones
+                    criminales y una búsqueda constante
+                    de información para enfrentar
+                    al narcotráfico.
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Investigación criminal:</strong>
+                        la historia gira alrededor de
+                        actividades delictivas y
+                        operaciones de las autoridades.
+                    </li>
+
+                    <li>
+                        <strong>Suspenso:</strong>
+                        la información se revela
+                        gradualmente, manteniendo
+                        la incertidumbre.
+                    </li>
+
+                    <li>
+                        <strong>Conflicto moral:</strong>
+                        los personajes cuestionan
+                        los límites de la justicia
+                        y la legalidad.
+                    </li>
+
+                    <li>
+                        <strong>Personajes vinculados
+                        con la ley:</strong>
+                        aparecen agentes federales,
+                        investigadores y operadores
+                        especiales.
+                    </li>
+
+                    <li>
+                        <strong>Ambiente de peligro:</strong>
+                        las operaciones criminales
+                        y la violencia generan
+                        una atmósfera de tensión.
+                    </li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <!-- SIGUIENTE PELÍCULA -->
+        <section class="siguiente">
+
+            <div>
+                <h2>¿QUIERES RESOLVER OTRO MISTERIO?</h2>
+                <p>
+                    Continúa con nuestra siguiente
+                    película del subgénero policiaco.
+                </p>
+            </div>
+
+            <a href="zodiac.html" class="boton boton-rojo">
+                SIGUIENTE: ZODIAC →
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+
+        <p>
+            <strong>NARRATIVA+</strong> |
+            Galería de Subgéneros Narrativos
+        </p>
+
+        <p>
+            CECyTE 24 · Cuahuixmatlac, Tlaxcala
+        </p>
+
+        <p>
+            Proyecto educativo de cine y literatura
+        </p>
+
+    </footer>
+
+    <script>
+        const header = document.getElementById("header");
+        const menu = document.getElementById("menu");
+        const menuToggle = document.getElementById("menuToggle");
+
+        // CAMBIAR EL NAV AL DESPLAZARSE
+        window.addEventListener("scroll", function() {
+            header.classList.toggle(
+                "compacto",
+                window.scrollY > 50
+            );
+        }, { passive: true });
+
+        // ABRIR Y CERRAR MENÚ
+        menuToggle.addEventListener("click", function() {
+            const abierto = menu.classList.toggle("abierto");
+
+            menuToggle.setAttribute("aria-expanded", abierto);
+            menuToggle.setAttribute(
+                "aria-label",
+                abierto ? "Cerrar menú" : "Abrir menú"
+            );
+
+            menuToggle.textContent = abierto ? "✕" : "☰";
+        });
+
+        // CERRAR MENÚ AL ELEGIR UNA OPCIÓN
+        document.querySelectorAll("#menu a").forEach(function(enlace) {
+            enlace.addEventListener("click", function() {
+                menu.classList.remove("abierto");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menú");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // CERRAR CON ESCAPE
+        document.addEventListener("keydown", function(evento) {
+            if (evento.key === "Escape") {
+                menu.classList.remove("abierto");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            }
+        });
+    </script>
+
+</body>
+</html>

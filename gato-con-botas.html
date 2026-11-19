@@ -1,0 +1,1443 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ficha literaria, sinopsis, personajes y análisis del cuento El gato con botas, de Charles Perrault.">
+
+<title>El gato con botas | Narrativa+</title>
+
+<style>
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+
+    padding: 19px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d7;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA CINEMATOGRÁFICA */
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    padding: 145px 7% 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image: url("gato.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(.35);
+    transform: scale(1.1);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.78) 50%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.hero-contenido {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: minmax(210px, 340px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+
+    animation: aparecer 1.2s ease both;
+}
+
+.portada-libro {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(229,9,20,.15);
+
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.etiqueta {
+    color: #ff3b46;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 82px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px #000;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.metadatos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.metadatos span {
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.40);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-descripcion {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 16px 25px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+
+    transition:
+        transform .3s,
+        background .3s,
+        box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,9,20,.20);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229,9,20,.40);
+}
+
+.boton-gris {
+    background: rgba(120,120,120,.45);
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.65);
+    transform: translateY(-4px);
+}
+
+/* SECCIONES */
+.seccion {
+    padding: 75px 7%;
+}
+
+.seccion-alternativa {
+    background: #111;
+}
+
+.titulo-seccion {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+/* FICHA LITERARIA */
+.ficha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.ficha-item {
+    padding: 22px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 12px;
+
+    transition:
+        border-color .3s,
+        transform .3s;
+}
+
+.ficha-item:hover {
+    border-color: #e50914;
+    transform: translateY(-3px);
+}
+
+.ficha-item strong {
+    display: block;
+    color: #ff4650;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ficha-item p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* SINOPSIS */
+.texto {
+    max-width: 1000px;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.texto p + p {
+    margin-top: 20px;
+}
+
+/* PERSONAJES */
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.personaje {
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #303030;
+    border-radius: 14px;
+
+    transition:
+        transform .3s,
+        border-color .3s;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.personaje h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.personaje p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ELEMENTOS DE AVENTURA */
+.elementos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.elemento {
+    padding: 28px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 13px;
+}
+
+.elemento h3 {
+    color: #ff4650;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.elemento p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ANÁLISIS */
+.analisis {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #1d1d1d, #111);
+    border-left: 5px solid #e50914;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.analisis p {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.9;
+}
+
+.analisis ul {
+    margin-top: 22px;
+    padding-left: 22px;
+}
+
+.analisis li {
+    margin-bottom: 13px;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+/* CIERRE DEL PROYECTO */
+.final-proyecto {
+    padding: 75px 7%;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #190507,
+        #111,
+        #080808
+    );
+
+    border-top: 1px solid #303030;
+}
+
+.final-proyecto h2 {
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+.final-proyecto h2 span {
+    color: #e50914;
+}
+
+.final-proyecto p {
+    max-width: 760px;
+    margin: 0 auto 30px;
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.final-proyecto .boton {
+    margin: 5px;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .personajes,
+    .elementos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 10px 5% 20px;
+        background: #111;
+        border-bottom: 1px solid #333;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #292929;
+    }
+
+    .hero {
+        padding: 125px 6% 65px;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .portada-libro {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 10vw, 70px);
+    }
+
+    .metadatos,
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+    .seccion {
+        padding: 60px 6%;
+    }
+
+    .ficha {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .personajes,
+    .elementos {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .analisis {
+        padding: 23px;
+    }
+
+    .texto,
+    .analisis p {
+        font-size: 15px;
+    }
+
+    .final-proyecto .boton {
+        display: flex;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ PERSONALIZADO DE AVENTURAS -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de aventuras">
+
+        <a href="galeria.html">
+            Menú principal
+        </a>
+
+        <a href="aventuras.html">
+            Aventuras
+        </a>
+
+        <a href="piratas-del-caribe.html">
+            Piratas del Caribe
+        </a>
+
+        <a href="jumanji.html">
+            Jumanji
+        </a>
+
+        <a href="gato-con-botas.html"
+           class="activo"
+           aria-current="page">
+            El gato con botas
+        </a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- PORTADA DEL CUENTO -->
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <img
+                src="gato.jpg"
+                alt="Portada del cuento El gato con botas"
+                class="portada-libro">
+
+            <div class="hero-texto">
+
+                <p class="etiqueta">
+                    AVENTURAS · FANTASÍA · CUENTO CLÁSICO
+                </p>
+
+                <h1>
+                    EL GATO
+                    <span>CON BOTAS</span>
+                </h1>
+
+                <div class="metadatos">
+                    <span>1697</span>
+                    <span>Charles Perrault</span>
+                    <span>Cuento literario</span>
+                </div>
+
+                <p class="hero-descripcion">
+                    Un joven molinero
+                    recibe como herencia
+                    únicamente un gato.
+                    Aunque al principio
+                    cree que no tiene
+                    ningún valor,
+                    pronto descubre
+                    que su mascota
+                    es extraordinariamente
+                    inteligente.
+                    Con un par de botas,
+                    una bolsa
+                    y mucha astucia,
+                    el gato emprende
+                    una serie de aventuras
+                    para cambiar
+                    la vida de su dueño.
+                </p>
+
+                <div class="acciones">
+
+                    <a href="#ficha"
+                       class="boton boton-rojo">
+                        ▶ VER FICHA LITERARIA
+                    </a>
+
+                    <a href="aventuras.html"
+                       class="boton boton-gris">
+                        ← VOLVER A AVENTURAS
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FICHA LITERARIA -->
+    <section class="seccion" id="ficha">
+
+        <h2 class="titulo-seccion">
+            FICHA <span>LITERARIA</span>
+        </h2>
+
+        <div class="ficha">
+
+            <div class="ficha-item">
+                <strong>Título</strong>
+                <p>El gato con botas</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Título original</strong>
+                <p>Le Maître chat ou le Chat botté</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Autor</strong>
+                <p>Charles Perrault</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Año de publicación</strong>
+                <p>1697</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>País</strong>
+                <p>Francia</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Género literario</strong>
+                <p>Narrativo</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Tipo de obra</strong>
+                <p>Cuento maravilloso</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Libro de publicación</strong>
+                <p>
+                    Historias o cuentos
+                    de tiempos pasados,
+                    conocidos como
+                    Cuentos de mamá ganso
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Personajes principales</strong>
+                <p>
+                    El gato con botas,
+                    el hijo menor
+                    del molinero,
+                    el rey,
+                    la princesa
+                    y el ogro
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Temas principales</strong>
+                <p>
+                    Astucia,
+                    aventura,
+                    ambición,
+                    ingenio,
+                    apariencia
+                    y ascenso social
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SINOPSIS -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            SINOPSIS <span>DEL CUENTO</span>
+        </h2>
+
+        <div class="texto">
+
+            <p>
+                La historia comienza
+                cuando un molinero
+                fallece y deja
+                sus bienes
+                como herencia
+                a sus tres hijos.
+                El mayor recibe
+                el molino,
+                el segundo
+                obtiene un burro
+                y el menor
+                solamente
+                recibe un gato.
+            </p>
+
+            <p>
+                El hijo menor
+                se siente
+                decepcionado
+                porque considera
+                que su herencia
+                no le permitirá
+                sobrevivir.
+                Sin embargo,
+                el gato demuestra
+                que puede hablar
+                y le pide
+                una bolsa
+                y un par
+                de botas.
+                Le promete
+                que podrá ayudarlo
+                a mejorar
+                su situación.
+            </p>
+
+            <p>
+                El gato comienza
+                a utilizar
+                su inteligencia
+                para conseguir
+                alimentos
+                y regalos.
+                Después
+                de atrapar
+                algunas presas,
+                las lleva
+                al rey
+                y asegura
+                que son obsequios
+                de su amo,
+                a quien presenta
+                con el título
+                inventado
+                de marqués
+                de Carabás.
+            </p>
+
+            <p>
+                Con el paso
+                del tiempo,
+                el gato consigue
+                que el rey
+                se interese
+                por aquel
+                supuesto noble.
+                Más adelante,
+                organiza
+                un encuentro
+                entre su dueño
+                y la familia real
+                cuando el rey
+                viaja
+                acompañado
+                de su hija.
+            </p>
+
+            <p>
+                El gato le indica
+                a su dueño
+                que se bañe
+                en un río.
+                Cuando pasa
+                la carroza real,
+                el gato
+                pide ayuda
+                y afirma
+                que su amo
+                ha sido
+                víctima
+                de un robo.
+                El rey
+                ordena
+                que le proporcionen
+                ropa elegante,
+                lo que hace
+                que el joven
+                parezca
+                un verdadero
+                noble.
+            </p>
+
+            <p>
+                Después,
+                el gato
+                corre por delante
+                de la carroza
+                y convence
+                a los campesinos
+                de que digan
+                que las tierras
+                pertenecen
+                al marqués
+                de Carabás.
+                De esta manera,
+                logra impresionar
+                al rey
+                con la aparente
+                riqueza
+                de su dueño.
+            </p>
+
+            <p>
+                Finalmente,
+                el gato
+                llega
+                a un castillo
+                perteneciente
+                a un poderoso
+                ogro.
+                El animal
+                descubre
+                que el ogro
+                tiene la capacidad
+                de transformarse
+                en diferentes
+                criaturas.
+                Entonces,
+                utiliza
+                su astucia
+                para convencerlo
+                de convertirse
+                en un ratón.
+            </p>
+
+            <p>
+                Cuando el ogro
+                se transforma,
+                el gato
+                lo atrapa
+                y se lo come.
+                Después
+                presenta
+                el castillo
+                como propiedad
+                del marqués
+                de Carabás.
+                Impresionado
+                por la riqueza
+                del joven,
+                el rey
+                acepta
+                que se case
+                con la princesa.
+                Así,
+                gracias
+                a los engaños
+                y la inteligencia
+                del gato,
+                su dueño
+                alcanza
+                una posición
+                social elevada.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERSONAJES -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            PERSONAJES <span>PRINCIPALES</span>
+        </h2>
+
+        <div class="personajes">
+
+            <article class="personaje">
+
+                <h3>El gato con botas</h3>
+
+                <p>
+                    Protagonista
+                    del cuento.
+                    Es un gato
+                    que puede hablar
+                    y posee
+                    una inteligencia
+                    extraordinaria.
+                    Utiliza
+                    su astucia,
+                    sus engaños
+                    y su habilidad
+                    para planear
+                    con el objetivo
+                    de mejorar
+                    la vida
+                    de su dueño.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>El hijo menor del molinero</h3>
+
+                <p>
+                    Joven
+                    que recibe
+                    un gato
+                    como única herencia.
+                    Al principio
+                    se siente
+                    desanimado,
+                    pero termina
+                    confiando
+                    en los planes
+                    de su mascota.
+                    Es presentado
+                    como el marqués
+                    de Carabás.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>El rey</h3>
+
+                <p>
+                    Gobernante
+                    del reino.
+                    Recibe
+                    los regalos
+                    del gato
+                    y llega
+                    a creer
+                    que su dueño
+                    es un noble
+                    muy rico.
+                    Finalmente
+                    acepta
+                    el matrimonio
+                    entre el joven
+                    y su hija.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>La princesa</h3>
+
+                <p>
+                    Hija del rey.
+                    Conoce
+                    al supuesto
+                    marqués
+                    de Carabás
+                    durante
+                    el recorrido
+                    en la carroza.
+                    Su matrimonio
+                    con el joven
+                    representa
+                    el cambio
+                    de posición
+                    social
+                    del protagonista.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>El ogro</h3>
+
+                <p>
+                    Ser fantástico
+                    que vive
+                    en un castillo
+                    y posee
+                    grandes riquezas.
+                    Tiene
+                    la capacidad
+                    de transformarse
+                    en distintos
+                    animales,
+                    pero termina
+                    siendo engañado
+                    por el gato.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Los campesinos</h3>
+
+                <p>
+                    Trabajadores
+                    que aparecen
+                    durante
+                    el recorrido
+                    del rey.
+                    El gato
+                    los convence
+                    de afirmar
+                    que las tierras
+                    pertenecen
+                    al marqués
+                    de Carabás,
+                    contribuyendo
+                    a su plan.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ELEMENTOS DE AVENTURA -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            ELEMENTOS DE <span>AVENTURA</span>
+        </h2>
+
+        <div class="elementos">
+
+            <article class="elemento">
+
+                <h3>🐱 Un protagonista astuto</h3>
+
+                <p>
+                    El gato
+                    utiliza
+                    su inteligencia
+                    para resolver
+                    problemas
+                    y superar
+                    obstáculos.
+                    Sus planes
+                    impulsan
+                    el desarrollo
+                    de la historia.
+                </p>
+
+            </article>
+
+            <article class="elemento">
+
+                <h3>🏰 Viajes y desafíos</h3>
+
+                <p>
+                    El gato
+                    recorre
+                    distintos
+                    lugares,
+                    se encuentra
+                    con el rey,
+                    convence
+                    a campesinos
+                    y enfrenta
+                    a un ogro
+                    en su castillo.
+                </p>
+
+            </article>
+
+            <article class="elemento">
+
+                <h3>✨ Elementos fantásticos</h3>
+
+                <p>
+                    El cuento
+                    presenta
+                    un gato
+                    que habla,
+                    un ogro
+                    capaz
+                    de transformarse
+                    y situaciones
+                    maravillosas
+                    que no ocurren
+                    en la realidad.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ANÁLISIS NARRATIVO -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            RELACIÓN CON EL
+            <span>SUBGÉNERO DE AVENTURAS</span>
+        </h2>
+
+        <div class="analisis">
+
+            <p>
+                El gato con botas
+                es principalmente
+                un cuento maravilloso,
+                pero también
+                presenta
+                características
+                de la narrativa
+                de aventuras.
+                Su protagonista
+                emprende
+                una serie
+                de acciones
+                para alcanzar
+                un objetivo:
+                transformar
+                la situación
+                económica
+                y social
+                de su dueño.
+                Durante
+                el relato,
+                el gato
+                realiza viajes,
+                enfrenta desafíos,
+                utiliza
+                su ingenio
+                y supera
+                a un poderoso
+                adversario.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Misión principal:</strong>
+                    ayudar
+                    a su dueño
+                    a conseguir
+                    riqueza
+                    y una mejor
+                    posición social.
+                </li>
+
+                <li>
+                    <strong>Viajes:</strong>
+                    el gato
+                    recorre
+                    diferentes
+                    lugares
+                    para desarrollar
+                    sus planes.
+                </li>
+
+                <li>
+                    <strong>Obstáculos:</strong>
+                    debe superar
+                    la pobreza
+                    inicial
+                    de su dueño
+                    y enfrentarse
+                    a un ogro.
+                </li>
+
+                <li>
+                    <strong>Ingenio:</strong>
+                    utiliza
+                    estrategias
+                    y engaños
+                    para resolver
+                    los conflictos.
+                </li>
+
+                <li>
+                    <strong>Fantasía:</strong>
+                    presenta
+                    animales
+                    que hablan
+                    y seres
+                    con poderes
+                    sobrenaturales.
+                </li>
+
+                <li>
+                    <strong>Desenlace:</strong>
+                    la aventura
+                    termina
+                    con un cambio
+                    importante
+                    en la vida
+                    del hijo
+                    del molinero.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- CIERRE DEL PROYECTO -->
+    <section class="final-proyecto">
+
+        <h2>
+            ¡HAS COMPLETADO
+            <span>NARRATIVA+!</span>
+        </h2>
+
+        <p>
+            Has llegado
+            al final
+            de nuestra
+            Galería de Subgéneros Narrativos.
+            A través
+            de películas
+            y cuentos,
+            exploramos
+            distintas formas
+            de contar historias,
+            desde el misterio
+            y la ciencia ficción
+            hasta la fantasía,
+            la historia
+            y las aventuras.
+            ¡Gracias por explorar
+            este universo narrativo!
+        </p>
+
+        <a href="galeria.html"
+           class="boton boton-rojo">
+            VER TODA LA GALERÍA →
+        </a>
+
+        <a href="index.html"
+           class="boton boton-gris">
+            VOLVER AL INICIO
+        </a>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

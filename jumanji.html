@@ -1,0 +1,1405 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ficha técnica, sinopsis, personajes y análisis narrativo de Jumanji: En la selva (2017).">
+
+<title>Jumanji: En la selva | Narrativa+</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+
+    padding: 19px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d7;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA CINEMATOGRÁFICA */
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    padding: 145px 7% 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image: url("jumanji.jpg");
+    background-size: cover;
+    background-position: center 30%;
+    filter: blur(8px) brightness(.35);
+    transform: scale(1.1);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.78) 50%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.hero-contenido {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: minmax(210px, 340px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+
+    animation: aparecer 1.2s ease both;
+}
+
+.poster-principal {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(229,9,20,.15);
+
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.etiqueta {
+    color: #ff3b46;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 82px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px #000;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.metadatos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.metadatos span {
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.40);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-descripcion {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 16px 25px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+
+    transition:
+        transform .3s,
+        background .3s,
+        box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,9,20,.20);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229,9,20,.40);
+}
+
+.boton-gris {
+    background: rgba(120,120,120,.45);
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.65);
+    transform: translateY(-4px);
+}
+
+/* SECCIONES */
+.seccion {
+    padding: 75px 7%;
+}
+
+.seccion-alternativa {
+    background: #111;
+}
+
+.titulo-seccion {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+/* FICHA TÉCNICA */
+.ficha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.ficha-item {
+    padding: 22px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 12px;
+
+    transition:
+        border-color .3s,
+        transform .3s;
+}
+
+.ficha-item:hover {
+    border-color: #e50914;
+    transform: translateY(-3px);
+}
+
+.ficha-item strong {
+    display: block;
+    color: #ff4650;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ficha-item p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* SINOPSIS */
+.texto {
+    max-width: 1000px;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.texto p + p {
+    margin-top: 20px;
+}
+
+/* PERSONAJES */
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.personaje {
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #303030;
+    border-radius: 14px;
+
+    transition:
+        transform .3s,
+        border-color .3s;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.personaje h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.actor {
+    color: #ff4650;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.personaje p:last-child {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ELEMENTOS DE AVENTURA */
+.elementos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.elemento {
+    padding: 28px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 13px;
+}
+
+.elemento h3 {
+    color: #ff4650;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.elemento p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ANÁLISIS */
+.analisis {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #1d1d1d, #111);
+    border-left: 5px solid #e50914;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.analisis p {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.9;
+}
+
+.analisis ul {
+    margin-top: 22px;
+    padding-left: 22px;
+}
+
+.analisis li {
+    margin-bottom: 13px;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+/* SIGUIENTE PÁGINA */
+.siguiente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+
+    padding: 50px 7%;
+    background: #151515;
+    border-top: 1px solid #303030;
+}
+
+.siguiente h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.siguiente p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .elementos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 10px 5% 20px;
+        background: #111;
+        border-bottom: 1px solid #333;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #292929;
+    }
+
+    .hero {
+        padding: 125px 6% 65px;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .poster-principal {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 10vw, 70px);
+    }
+
+    .metadatos,
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+    .seccion {
+        padding: 60px 6%;
+    }
+
+    .ficha {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .personajes,
+    .elementos {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .analisis {
+        padding: 23px;
+    }
+
+    .texto,
+    .analisis p {
+        font-size: 15px;
+    }
+
+    .siguiente {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ PERSONALIZADO DE AVENTURAS -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de aventuras">
+
+        <a href="galeria.html">Menú principal</a>
+        <a href="aventuras.html">Aventuras</a>
+        <a href="piratas-del-caribe.html">Piratas del Caribe</a>
+
+        <a href="jumanji.html"
+           class="activo"
+           aria-current="page">
+            Jumanji
+        </a>
+
+        <a href="gato-con-botas.html">
+            El gato con botas
+        </a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- PORTADA DE LA PELÍCULA -->
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <img
+                src="jumanji.jpg"
+                alt="Póster de Jumanji: En la selva"
+                class="poster-principal">
+
+            <div class="hero-texto">
+
+                <p class="etiqueta">
+                    AVENTURAS · ACCIÓN · FANTASÍA
+                </p>
+
+                <h1>
+                    JUMANJI:
+                    <span>EN LA SELVA</span>
+                </h1>
+
+                <div class="metadatos">
+                    <span>2017</span>
+                    <span>119 minutos</span>
+                    <span>Aventuras</span>
+                </div>
+
+                <p class="hero-descripcion">
+                    Cuatro estudiantes
+                    descubren un antiguo
+                    videojuego llamado Jumanji.
+                    Al comenzar a jugar,
+                    son transportados
+                    a una peligrosa selva
+                    y se convierten
+                    en los personajes
+                    que seleccionaron.
+                    Para regresar
+                    al mundo real,
+                    deberán trabajar
+                    en equipo
+                    y completar
+                    una difícil misión.
+                </p>
+
+                <div class="acciones">
+
+                    <a href="#ficha"
+                       class="boton boton-rojo">
+                        ▶ VER FICHA TÉCNICA
+                    </a>
+
+                    <a href="aventuras.html"
+                       class="boton boton-gris">
+                        ← VOLVER A AVENTURAS
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FICHA TÉCNICA -->
+    <section class="seccion" id="ficha">
+
+        <h2 class="titulo-seccion">
+            FICHA <span>TÉCNICA</span>
+        </h2>
+
+        <div class="ficha">
+
+            <div class="ficha-item">
+                <strong>Título original</strong>
+                <p>Jumanji: Welcome to the Jungle</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Año de estreno</strong>
+                <p>2017</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Director</strong>
+                <p>Jake Kasdan</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Guionistas</strong>
+                <p>
+                    Chris McKenna,
+                    Erik Sommers,
+                    Scott Rosenberg
+                    y Jeff Pinkner
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>País de producción</strong>
+                <p>Estados Unidos</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Duración</strong>
+                <p>119 minutos</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Género cinematográfico</strong>
+                <p>
+                    Aventuras,
+                    acción,
+                    fantasía
+                    y comedia
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Productora</strong>
+                <p>Columbia Pictures</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Reparto principal</strong>
+                <p>
+                    Dwayne Johnson,
+                    Kevin Hart,
+                    Jack Black,
+                    Karen Gillan
+                    y Nick Jonas
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Música original</strong>
+                <p>Henry Jackman</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SINOPSIS -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            SINOPSIS <span>DE LA PELÍCULA</span>
+        </h2>
+
+        <div class="texto">
+
+            <p>
+                La historia comienza
+                cuando cuatro estudiantes
+                de preparatoria:
+                Spencer, Fridge,
+                Bethany y Martha,
+                reciben un castigo
+                escolar que consiste
+                en ordenar
+                un almacén
+                de su escuela.
+                Mientras realizan
+                la actividad,
+                descubren
+                una antigua consola
+                de videojuegos
+                que contiene
+                un juego llamado
+                Jumanji.
+            </p>
+
+            <p>
+                Los jóvenes deciden
+                encender la consola
+                y seleccionar
+                un personaje
+                para jugar.
+                Sin embargo,
+                algo extraordinario
+                sucede:
+                son absorbidos
+                por el videojuego
+                y aparecen
+                en una selva
+                desconocida.
+            </p>
+
+            <p>
+                Cada estudiante
+                adquiere
+                el cuerpo
+                y las habilidades
+                del personaje
+                que eligió.
+                Spencer se convierte
+                en el aventurero
+                Dr. Smolder Bravestone;
+                Fridge aparece
+                como el zoólogo
+                Franklin Finbar;
+                Bethany se transforma
+                en el profesor
+                Sheldon Oberon;
+                y Martha
+                se convierte
+                en Ruby Roundhouse,
+                una experta
+                en combate.
+            </p>
+
+            <p>
+                Pronto descubren
+                que deben completar
+                una misión
+                para escapar
+                del videojuego.
+                Su objetivo
+                consiste
+                en recuperar
+                una joya sagrada
+                conocida
+                como el Ojo
+                del Jaguar
+                y devolverla
+                a una estatua
+                para restaurar
+                el equilibrio
+                de Jumanji.
+            </p>
+
+            <p>
+                Durante
+                su recorrido,
+                los protagonistas
+                enfrentan
+                animales salvajes,
+                trampas,
+                enemigos
+                y numerosos
+                obstáculos.
+                También descubren
+                que cada personaje
+                tiene fortalezas,
+                debilidades
+                y un número
+                limitado de vidas.
+            </p>
+
+            <p>
+                En medio
+                de la aventura,
+                conocen
+                a Alex,
+                un joven
+                que lleva
+                muchos años
+                atrapado
+                dentro
+                del videojuego.
+                Juntos
+                deciden
+                completar
+                la misión
+                y encontrar
+                una manera
+                de regresar
+                a sus hogares.
+            </p>
+
+            <p>
+                A medida
+                que avanzan,
+                los estudiantes
+                aprenden
+                a confiar
+                unos en otros,
+                superar
+                sus inseguridades
+                y aprovechar
+                sus habilidades.
+                Finalmente,
+                consiguen
+                devolver
+                la joya
+                a su lugar,
+                completar
+                el juego
+                y regresar
+                al mundo real.
+            </p>
+
+            <p>
+                La experiencia
+                transforma
+                la forma
+                en que
+                se relacionan.
+                Los protagonistas
+                comprenden
+                la importancia
+                de la amistad,
+                la valentía,
+                la confianza
+                y el trabajo
+                en equipo.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERSONAJES -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            PERSONAJES <span>PRINCIPALES</span>
+        </h2>
+
+        <div class="personajes">
+
+            <article class="personaje">
+
+                <h3>Dr. Smolder Bravestone</h3>
+
+                <p class="actor">
+                    Interpretado por Dwayne Johnson
+                </p>
+
+                <p>
+                    Es el avatar
+                    elegido por Spencer.
+                    Posee gran fuerza,
+                    velocidad
+                    y habilidades
+                    de combate.
+                    Aunque su apariencia
+                    es valiente,
+                    Spencer debe
+                    aprender
+                    a confiar
+                    en sí mismo
+                    para superar
+                    sus temores.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Franklin "Mouse" Finbar</h3>
+
+                <p class="actor">
+                    Interpretado por Kevin Hart
+                </p>
+
+                <p>
+                    Es el personaje
+                    elegido por Fridge.
+                    Tiene conocimientos
+                    sobre animales
+                    y funciona
+                    como ayudante
+                    de Bravestone.
+                    Su aventura
+                    le enseña
+                    a colaborar
+                    y valorar
+                    las capacidades
+                    de los demás.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Profesor Sheldon Oberon</h3>
+
+                <p class="actor">
+                    Interpretado por Jack Black
+                </p>
+
+                <p>
+                    Es el avatar
+                    de Bethany.
+                    Posee conocimientos
+                    sobre mapas
+                    y exploración.
+                    La experiencia
+                    dentro
+                    del videojuego
+                    le permite
+                    desarrollar
+                    empatía
+                    y comprender
+                    mejor
+                    a sus compañeros.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Ruby Roundhouse</h3>
+
+                <p class="actor">
+                    Interpretada por Karen Gillan
+                </p>
+
+                <p>
+                    Es el personaje
+                    elegido por Martha.
+                    Tiene habilidades
+                    de combate
+                    y una gran
+                    capacidad física.
+                    Durante
+                    la aventura,
+                    Martha aprende
+                    a confiar
+                    en sus habilidades
+                    y a superar
+                    su inseguridad.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Jefferson "Seaplane" McDonough</h3>
+
+                <p class="actor">
+                    Interpretado por Nick Jonas
+                </p>
+
+                <p>
+                    Es el avatar
+                    de Alex,
+                    un joven
+                    que quedó
+                    atrapado
+                    en Jumanji
+                    muchos años antes.
+                    Ayuda
+                    al grupo
+                    a comprender
+                    los peligros
+                    del juego
+                    y completar
+                    la misión.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Russell Van Pelt</h3>
+
+                <p class="actor">
+                    Interpretado por Bobby Cannavale
+                </p>
+
+                <p>
+                    Es el principal
+                    antagonista
+                    del videojuego.
+                    Busca
+                    conservar
+                    la joya
+                    del Jaguar
+                    y utiliza
+                    sus poderes
+                    para impedir
+                    que los protagonistas
+                    completen
+                    su misión.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ELEMENTOS DE AVENTURA -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            ELEMENTOS DE <span>AVENTURA</span>
+        </h2>
+
+        <div class="elementos">
+
+            <article class="elemento">
+
+                <h3>🌴 La selva de Jumanji</h3>
+
+                <p>
+                    La historia
+                    se desarrolla
+                    en un mundo
+                    desconocido,
+                    lleno de animales,
+                    montañas,
+                    ríos,
+                    trampas
+                    y peligros.
+                </p>
+
+            </article>
+
+            <article class="elemento">
+
+                <h3>💎 La joya del Jaguar</h3>
+
+                <p>
+                    Los protagonistas
+                    deben recuperar
+                    una joya sagrada
+                    y devolverla
+                    a su lugar
+                    para completar
+                    la misión
+                    y escapar
+                    del videojuego.
+                </p>
+
+            </article>
+
+            <article class="elemento">
+
+                <h3>🎮 Las reglas del juego</h3>
+
+                <p>
+                    Cada personaje
+                    posee habilidades,
+                    debilidades
+                    y vidas limitadas.
+                    Estas reglas
+                    aumentan
+                    el peligro
+                    y obligan
+                    al equipo
+                    a tomar decisiones.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ANÁLISIS NARRATIVO -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            RELACIÓN CON EL
+            <span>SUBGÉNERO DE AVENTURAS</span>
+        </h2>
+
+        <div class="analisis">
+
+            <p>
+                Jumanji: En la selva
+                pertenece
+                al subgénero
+                de aventuras
+                porque presenta
+                un viaje
+                hacia un mundo
+                desconocido,
+                donde los protagonistas
+                deben superar
+                desafíos
+                y completar
+                una misión
+                para regresar
+                a su realidad.
+                La historia
+                combina
+                exploración,
+                acción,
+                peligro,
+                humor
+                y fantasía.
+                Además,
+                los personajes
+                experimentan
+                cambios personales
+                a medida
+                que enfrentan
+                las dificultades
+                del videojuego.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Viaje extraordinario:</strong>
+                    los estudiantes
+                    son transportados
+                    a un mundo
+                    desconocido
+                    dentro
+                    de un videojuego.
+                </li>
+
+                <li>
+                    <strong>Misión principal:</strong>
+                    deben recuperar
+                    la joya
+                    del Jaguar
+                    y devolverla
+                    a su lugar.
+                </li>
+
+                <li>
+                    <strong>Obstáculos:</strong>
+                    enfrentan
+                    animales salvajes,
+                    trampas,
+                    enemigos
+                    y situaciones
+                    peligrosas.
+                </li>
+
+                <li>
+                    <strong>Trabajo en equipo:</strong>
+                    necesitan
+                    combinar
+                    sus habilidades
+                    para superar
+                    los desafíos.
+                </li>
+
+                <li>
+                    <strong>Elementos fantásticos:</strong>
+                    los personajes
+                    ingresan
+                    físicamente
+                    a un videojuego
+                    y adquieren
+                    nuevas identidades.
+                </li>
+
+                <li>
+                    <strong>Transformación personal:</strong>
+                    aprenden
+                    a superar
+                    sus inseguridades
+                    y valorar
+                    la amistad
+                    y la cooperación.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- SIGUIENTE OBRA -->
+    <section class="siguiente">
+
+        <div>
+
+            <h2>¡NOS ESPERA NUESTRA ÚLTIMA HISTORIA!</h2>
+
+            <p>
+                Dejamos atrás
+                la selva
+                de Jumanji
+                para conocer
+                a un gato
+                extraordinariamente
+                inteligente
+                que utiliza
+                su astucia
+                para cambiar
+                la vida
+                de su dueño.
+            </p>
+
+        </div>
+
+        <a href="gato-con-botas.html"
+           class="boton boton-rojo">
+            SIGUIENTE: EL GATO CON BOTAS →
+        </a>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Explora el subgénero policiaco mediante Sicario, Zodiac y Los crímenes de la calle Morgue.">
+
+    <title>Policiaco | Galería de Subgéneros Narrativos</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            background: #080808;
+            color: #fff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* MENÚ DE NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 6%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+
+            background: rgba(5, 5, 5, 0.83);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transition: padding .3s, background .3s;
+        }
+
+        header.compacto {
+            padding-top: 13px;
+            padding-bottom: 13px;
+            background: rgba(5,5,5,.97);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #e50914;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+        }
+
+        nav a {
+            color: #ddd;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color .3s;
+        }
+
+        nav a:hover,
+        nav a.activo {
+            color: #ff3945;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 29px;
+            cursor: pointer;
+        }
+
+        /* PORTADA CINEMATOGRÁFICA */
+        .portada {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 150px 7% 100px;
+        }
+
+        .portada::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+
+            background-image: url("portada-policiaco.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            animation: zoomFondo 18s ease-in-out infinite alternate;
+        }
+
+        .portada::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                90deg,
+                rgba(0,0,0,.92) 0%,
+                rgba(0,0,0,.67) 42%,
+                rgba(0,0,0,.18) 100%
+            );
+        }
+
+        .portada-contenido {
+            max-width: 740px;
+            animation: aparecer 1.2s ease both;
+        }
+
+        .etiqueta {
+            color: #ff404b;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .portada h1 {
+            font-size: clamp(55px, 9vw, 125px);
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1.05;
+            text-shadow: 0 5px 25px #000;
+            margin-bottom: 24px;
+        }
+
+        .portada h1 span {
+            color: #e50914;
+        }
+
+        .descripcion {
+            font-size: clamp(16px, 1.8vw, 20px);
+            line-height: 1.8;
+            color: #e5e5e5;
+            max-width: 650px;
+            text-shadow: 0 3px 10px #000;
+        }
+
+        .datos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .dato {
+            background: rgba(0,0,0,.45);
+            border: 1px solid rgba(255,255,255,.20);
+            border-radius: 30px;
+            padding: 9px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+
+        .acciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 17px 28px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 800;
+            transition: transform .3s, background .3s, box-shadow .3s;
+        }
+
+        .boton-rojo {
+            background: #e50914;
+            color: white;
+            box-shadow: 0 10px 30px rgba(229,9,20,.30);
+        }
+
+        .boton-rojo:hover {
+            background: #ff2834;
+            transform: translateY(-4px);
+            box-shadow: 0 14px 35px rgba(229,9,20,.50);
+        }
+
+        .boton-secundario {
+            background: rgba(110,110,110,.45);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .boton-secundario:hover {
+            background: rgba(150,150,150,.60);
+            transform: translateY(-4px);
+        }
+
+        /* INFORMACIÓN DEL SUBGÉNERO */
+        .informacion {
+            padding: 85px 7%;
+            background: linear-gradient(180deg, #101010, #080808);
+        }
+
+        .titulo-seccion {
+            font-size: clamp(27px, 3.5vw, 42px);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .titulo-seccion span {
+            color: #e50914;
+        }
+
+        .informacion p {
+            max-width: 950px;
+            font-size: 17px;
+            line-height: 1.9;
+            color: #c9c9c9;
+        }
+
+        /* GALERÍA DE OBRAS */
+        .contenido {
+            padding: 70px 7% 100px;
+        }
+
+        .subtitulo {
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+
+        .obras {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .tarjeta {
+            background: #171717;
+            border: 1px solid #292929;
+            border-radius: 15px;
+            overflow: hidden;
+
+            transition:
+                transform .35s,
+                border-color .35s,
+                box-shadow .35s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            border-color: #e50914;
+            box-shadow: 0 20px 40px rgba(0,0,0,.6);
+        }
+
+        .poster {
+            position: relative;
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
+            background: #252525;
+        }
+
+        .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s;
+        }
+
+        .tarjeta:hover .poster img {
+            transform: scale(1.07);
+        }
+
+        .tipo {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 13px;
+            background: #e50914;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .tipo.cuento {
+            background: #a36a17;
+        }
+
+        .tarjeta-info {
+            padding: 25px;
+        }
+
+        .tarjeta-info h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .tarjeta-info p {
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            min-height: 72px;
+        }
+
+        .ver-obra {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #ff4650;
+            font-weight: 800;
+            font-size: 13px;
+            transition: gap .3s;
+        }
+
+        .ver-obra:hover {
+            gap: 17px;
+        }
+
+        .tarjeta:focus-within {
+            outline: 2px solid #e50914;
+            outline-offset: 4px;
+        }
+
+        /* NAVEGACIÓN FINAL */
+        .navegacion-final {
+            padding: 45px 7% 75px;
+            background: #101010;
+            border-top: 1px solid #262626;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .navegacion-final p {
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        footer {
+            padding: 30px 7%;
+            background: #080808;
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        footer strong {
+            color: #e50914;
+        }
+
+        /* ANIMACIONES */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomFondo {
+            from { transform: scale(1); }
+            to { transform: scale(1.055); }
+        }
+
+        /* TABLETAS */
+        @media (max-width: 1050px) {
+            nav {
+                gap: 13px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .obras {
+                gap: 18px;
+            }
+
+            .tarjeta-info {
+                padding: 19px;
+            }
+        }
+
+        /* CELULARES */
+        @media (max-width: 800px) {
+            header {
+                padding: 16px 5%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+
+                background: #111;
+                padding: 10px 5% 20px;
+                max-height: 75vh;
+                overflow-y: auto;
+                border-bottom: 1px solid #333;
+            }
+
+            nav.abierto {
+                display: flex;
+            }
+
+            nav a {
+                font-size: 14px;
+                padding: 15px 8px;
+                border-bottom: 1px solid #282828;
+            }
+
+            .portada {
+                min-height: 90vh;
+                min-height: 90svh;
+                padding: 135px 6% 80px;
+            }
+
+            .portada::after {
+                background: linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.90),
+                    rgba(0,0,0,.45)
+                );
+            }
+
+            .portada h1 {
+                font-size: clamp(45px, 12vw, 75px);
+                letter-spacing: -1px;
+            }
+
+            .informacion,
+            .contenido {
+                padding: 65px 6%;
+            }
+
+            .obras {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 550px) {
+            .obras {
+                grid-template-columns: 1fr;
+                max-width: 410px;
+                margin: auto;
+            }
+
+            .portada h1 {
+                font-size: 48px;
+            }
+
+            .descripcion {
+                font-size: 15px;
+            }
+
+            .acciones {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .boton {
+                text-align: center;
+            }
+
+            .tarjeta-info p {
+                min-height: 0;
+            }
+
+            .navegacion-final {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN PERSONALIZADA -->
+    <header id="header">
+
+        <a href="galeria.html" class="logo">
+            NARRATIVA<span>+</span>
+        </a>
+
+        <button
+            id="menuToggle"
+            class="menu-toggle"
+            aria-label="Abrir menú"
+            aria-controls="menu"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <nav id="menu" aria-label="Navegación policiaca">
+            <a href="galeria.html">Menú principal</a>
+            <a href="policiaco.html" class="activo">Policiaco</a>
+            <a href="sicario.html">Sicario</a>
+            <a href="zodiac.html">Zodiac</a>
+            <a href="crimenes-calle-morgue.html">
+                Los crímenes de la calle Morgue
+            </a>
+        </nav>
+
+    </header>
+
+    <!-- PORTADA DEL SUBGÉNERO -->
+    <section class="portada">
+
+        <div class="portada-contenido">
+
+            <div class="etiqueta">
+                SUBGÉNERO NARRATIVO · 01
+            </div>
+
+            <h1>
+                POLI<span>CIACO</span>
+            </h1>
+
+            <p class="descripcion">
+                Cada pista cuenta una historia.
+                Cada sospechoso esconde un secreto.
+                Adéntrate en un mundo de crímenes,
+                investigaciones y misterios que
+                desafían la inteligencia.
+            </p>
+
+            <div class="datos">
+                <span class="dato">2 Películas</span>
+                <span class="dato">1 Cuento</span>
+                <span class="dato">Misterio y suspenso</span>
+            </div>
+
+            <div class="acciones">
+                <a href="#contenido" class="boton boton-rojo">
+                    ▶ EXPLORAR CONTENIDO
+                </a>
+
+                <a href="galeria.html"
+                   class="boton boton-secundario">
+                    ← VOLVER A LA GALERÍA
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EXPLICACIÓN -->
+    <section class="informacion">
+
+        <h2 class="titulo-seccion">
+            ¿QUÉ ES EL <span>SUBGÉNERO POLICIACO?</span>
+        </h2>
+
+        <p>
+            El subgénero policiaco se caracteriza por presentar
+            historias relacionadas con delitos, investigaciones
+            y la búsqueda de la verdad. Sus protagonistas
+            suelen ser detectives, policías, investigadores
+            o personas que intentan resolver un misterio.
+            Las pistas, los sospechosos, los interrogatorios
+            y los giros inesperados mantienen el suspenso
+            hasta el desenlace.
+        </p>
+
+    </section>
+
+    <!-- PELÍCULAS Y CUENTO -->
+    <main class="contenido" id="contenido">
+
+        <h2 class="titulo-seccion">
+            DESCUBRE LAS <span>HISTORIAS</span>
+        </h2>
+
+        <p class="subtitulo">
+            Selecciona una película o el cuento para
+            conocer su ficha, sinopsis y relación
+            con el subgénero policiaco.
+        </p>
+
+        <div class="obras">
+
+            <!-- SICARIO -->
+            <article class="tarjeta">
+
+                <div class="poster">
+                    <img src="sicario.jpg"
+                         alt="Póster de Sicario"
+                         loading="lazy">
+                    <span class="tipo">PELÍCULA</span>
+                </div>
+
+                <div class="tarjeta-info">
+                    <h3>Sicario</h3>
+
+                    <p>
+                        Una agente del FBI se involucra
+                        en una peligrosa operación contra
+                        el narcotráfico en la frontera.
+                    </p>
+
+                    <a href="sicario.html" class="ver-obra">
+                        VER FICHA COMPLETA →
+                    </a>
+                </div>
+
+            </article>
+
+            <!-- ZODIAC -->
+            <article class="tarjeta">
+
+                <div class="poster">
+                    <img src="zodiac.jpg"
+                         alt="Póster de Zodiac"
+                         loading="lazy">
+                    <span class="tipo">PELÍCULA</span>
+                </div>
+
+                <div class="tarjeta-info">
+                    <h3>Zodiac</h3>
+
+                    <p>
+                        Investigadores y periodistas
+                        intentan descubrir la identidad
+                        de un misterioso asesino serial.
+                    </p>
+
+                    <a href="zodiac.html" class="ver-obra">
+                        VER FICHA COMPLETA →
+                    </a>
+                </div>
+
+            </article>
+
+            <!-- CUENTO -->
+            <article class="tarjeta">
+
+                <div class="poster">
+                    <img src="morgue.jpg"
+                         alt="Portada de Los crímenes de la calle Morgue"
+                         loading="lazy">
+                    <span class="tipo cuento">CUENTO</span>
+                </div>
+
+                <div class="tarjeta-info">
+                    <h3>Los crímenes de la calle Morgue</h3>
+
+                    <p>
+                        Un investigador utiliza la lógica
+                        y la observación para resolver
+                        un crimen aparentemente imposible.
+                    </p>
+
+                    <a href="crimenes-calle-morgue.html"
+                       class="ver-obra">
+                        LEER INFORMACIÓN →
+                    </a>
+                </div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- NAVEGACIÓN INFERIOR -->
+    <section class="navegacion-final">
+
+        <div>
+            <h2>¿LISTO PARA OTRO MISTERIO?</h2>
+            <p>
+                Continúa explorando los universos narrativos.
+            </p>
+        </div>
+
+        <a href="ciencia-ficcion.html"
+           class="boton boton-rojo">
+            SIGUIENTE: CIENCIA FICCIÓN →
+        </a>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>
+            <strong>NARRATIVA+</strong> |
+            Galería de Subgéneros Narrativos
+        </p>
+
+        <p>
+            CECyTE 24 · Cuahuixmatlac, Tlaxcala
+        </p>
+    </footer>
+
+    <script>
+        const header = document.getElementById("header");
+        const menu = document.getElementById("menu");
+        const menuToggle = document.getElementById("menuToggle");
+
+        // EFECTO DEL NAV AL DESPLAZARSE
+        window.addEventListener("scroll", function() {
+            header.classList.toggle(
+                "compacto",
+                window.scrollY > 50
+            );
+        }, { passive: true });
+
+        // MENÚ RESPONSIVO
+        menuToggle.addEventListener("click", function() {
+            const abierto = menu.classList.toggle("abierto");
+
+            menuToggle.setAttribute("aria-expanded", abierto);
+            menuToggle.setAttribute(
+                "aria-label",
+                abierto ? "Cerrar menú" : "Abrir menú"
+            );
+            menuToggle.textContent = abierto ? "✕" : "☰";
+        });
+
+        // CERRAR MENÚ AL SELECCIONAR UN ENLACE
+        document.querySelectorAll("#menu a").forEach(function(enlace) {
+            enlace.addEventListener("click", function() {
+                menu.classList.remove("abierto");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Abrir menú");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // CERRAR MENÚ CON ESCAPE
+        document.addEventListener("keydown", function(evento) {
+            if (evento.key === "Escape") {
+                menu.classList.remove("abierto");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.textContent = "☰";
+            }
+        });
+    </script>
+
+</body>
+</html>

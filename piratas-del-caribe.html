@@ -1,0 +1,1337 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ficha técnica, sinopsis, personajes y análisis narrativo de Piratas del Caribe: La maldición del Perla Negra (2003).">
+
+<title>Piratas del Caribe | Narrativa+</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 19px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d7;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA CINEMATOGRÁFICA */
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    padding: 145px 7% 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: url("piratas.jpg");
+    background-size: cover;
+    background-position: center 30%;
+    filter: blur(8px) brightness(.35);
+    transform: scale(1.1);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.78) 50%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.hero-contenido {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(210px, 340px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+    animation: aparecer 1.2s ease both;
+}
+
+.poster-principal {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(229,9,20,.15);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.etiqueta {
+    color: #ff3b46;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5.2vw, 72px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px #000;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.metadatos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.metadatos span {
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.40);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-descripcion {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 25px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    transition: transform .3s, background .3s, box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,9,20,.20);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229,9,20,.40);
+}
+
+.boton-gris {
+    background: rgba(120,120,120,.45);
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.65);
+    transform: translateY(-4px);
+}
+
+/* SECCIONES */
+.seccion {
+    padding: 75px 7%;
+}
+
+.seccion-alternativa {
+    background: #111;
+}
+
+.titulo-seccion {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+/* FICHA TÉCNICA */
+.ficha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.ficha-item {
+    padding: 22px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    transition: border-color .3s, transform .3s;
+}
+
+.ficha-item:hover {
+    border-color: #e50914;
+    transform: translateY(-3px);
+}
+
+.ficha-item strong {
+    display: block;
+    color: #ff4650;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ficha-item p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* SINOPSIS */
+.texto {
+    max-width: 1000px;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.texto p + p {
+    margin-top: 20px;
+}
+
+/* PERSONAJES */
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.personaje {
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #303030;
+    border-radius: 14px;
+    transition: transform .3s, border-color .3s;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.personaje h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.actor {
+    color: #ff4650;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.personaje p:last-child {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ELEMENTOS DE AVENTURA */
+.elementos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.elemento {
+    padding: 28px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 13px;
+}
+
+.elemento h3 {
+    color: #ff4650;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.elemento p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ANÁLISIS */
+.analisis {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #1d1d1d, #111);
+    border-left: 5px solid #e50914;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.analisis p {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.9;
+}
+
+.analisis ul {
+    margin-top: 22px;
+    padding-left: 22px;
+}
+
+.analisis li {
+    margin-bottom: 13px;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+/* SIGUIENTE PÁGINA */
+.siguiente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 50px 7%;
+    background: #151515;
+    border-top: 1px solid #303030;
+}
+
+.siguiente h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.siguiente p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .personajes,
+    .elementos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5% 20px;
+        background: #111;
+        border-bottom: 1px solid #333;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #292929;
+    }
+
+    .hero {
+        padding: 125px 6% 65px;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .poster-principal {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(35px, 8vw, 65px);
+    }
+
+    .metadatos,
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+    .seccion {
+        padding: 60px 6%;
+    }
+
+    .ficha {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .personajes,
+    .elementos {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .analisis {
+        padding: 23px;
+    }
+
+    .texto,
+    .analisis p {
+        font-size: 15px;
+    }
+
+    .siguiente {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ PERSONALIZADO DE AVENTURAS -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de aventuras">
+        <a href="galeria.html">Menú principal</a>
+        <a href="aventuras.html">Aventuras</a>
+
+        <a href="piratas-del-caribe.html"
+           class="activo"
+           aria-current="page">
+            Piratas del Caribe
+        </a>
+
+        <a href="jumanji.html">Jumanji</a>
+        <a href="gato-con-botas.html">El gato con botas</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- PORTADA DE LA PELÍCULA -->
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <img
+                src="piratas.jpg"
+                alt="Póster de Piratas del Caribe: La maldición del Perla Negra"
+                class="poster-principal">
+
+            <div class="hero-texto">
+
+                <p class="etiqueta">
+                    AVENTURAS · ACCIÓN · FANTASÍA
+                </p>
+
+                <h1>
+                    PIRATAS DEL CARIBE:
+                    <span>LA MALDICIÓN DEL PERLA NEGRA</span>
+                </h1>
+
+                <div class="metadatos">
+                    <span>2003</span>
+                    <span>143 minutos</span>
+                    <span>Aventuras</span>
+                </div>
+
+                <p class="hero-descripcion">
+                    El capitán Jack Sparrow
+                    llega a Port Royal
+                    con la intención
+                    de conseguir un barco.
+                    Sin embargo,
+                    pronto se ve involucrado
+                    en una peligrosa aventura
+                    junto a Will Turner,
+                    quien intenta rescatar
+                    a Elizabeth Swann
+                    de una tripulación
+                    de piratas malditos.
+                </p>
+
+                <div class="acciones">
+
+                    <a href="#ficha"
+                       class="boton boton-rojo">
+                        ▶ VER FICHA TÉCNICA
+                    </a>
+
+                    <a href="aventuras.html"
+                       class="boton boton-gris">
+                        ← VOLVER A AVENTURAS
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FICHA TÉCNICA -->
+    <section class="seccion" id="ficha">
+
+        <h2 class="titulo-seccion">
+            FICHA <span>TÉCNICA</span>
+        </h2>
+
+        <div class="ficha">
+
+            <div class="ficha-item">
+                <strong>Título original</strong>
+                <p>
+                    Pirates of the Caribbean:
+                    The Curse of the Black Pearl
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Año de estreno</strong>
+                <p>2003</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Director</strong>
+                <p>Gore Verbinski</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Guionistas</strong>
+                <p>Ted Elliott y Terry Rossio</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>País de producción</strong>
+                <p>Estados Unidos</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Duración</strong>
+                <p>143 minutos</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Género cinematográfico</strong>
+                <p>Aventuras, acción y fantasía</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Productor</strong>
+                <p>Jerry Bruckheimer</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Reparto principal</strong>
+                <p>
+                    Johnny Depp,
+                    Orlando Bloom,
+                    Keira Knightley
+                    y Geoffrey Rush
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Música original</strong>
+                <p>Klaus Badelt</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SINOPSIS -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            SINOPSIS <span>DE LA PELÍCULA</span>
+        </h2>
+
+        <div class="texto">
+
+            <p>
+                La historia comienza
+                cuando el capitán
+                Jack Sparrow,
+                un pirata
+                astuto y excéntrico,
+                llega a Port Royal
+                en busca
+                de una embarcación.
+                Allí conoce
+                a Will Turner,
+                un joven herrero
+                que siente
+                un profundo cariño
+                por Elizabeth Swann,
+                la hija
+                del gobernador.
+            </p>
+
+            <p>
+                Poco después,
+                Port Royal
+                es atacado
+                por la tripulación
+                del Perla Negra,
+                un barco pirata
+                dirigido
+                por el capitán
+                Héctor Barbossa.
+                Durante el ataque,
+                los piratas
+                secuestran
+                a Elizabeth,
+                pues creen
+                que puede ayudarlos
+                a romper
+                una antigua maldición.
+            </p>
+
+            <p>
+                Will decide
+                rescatar
+                a Elizabeth
+                y busca
+                la ayuda
+                de Jack Sparrow.
+                Aunque inicialmente
+                desconfía
+                del pirata,
+                ambos terminan
+                formando
+                una alianza
+                para perseguir
+                al Perla Negra.
+            </p>
+
+            <p>
+                Durante su viaje,
+                descubren
+                que Barbossa
+                y su tripulación
+                robaron
+                un tesoro azteca
+                que estaba maldito.
+                Como consecuencia,
+                los piratas
+                se convirtieron
+                en seres
+                que no pueden
+                disfrutar
+                de los placeres
+                de la vida
+                ni morir
+                de manera normal.
+                Bajo la luz
+                de la luna,
+                sus cuerpos
+                muestran
+                una apariencia
+                esquelética.
+            </p>
+
+            <p>
+                Para romper
+                la maldición,
+                deben devolver
+                todas las monedas
+                robadas
+                y ofrecer
+                la sangre
+                de quienes
+                participaron
+                en el robo,
+                o de sus descendientes.
+                Esta situación
+                convierte
+                a Will Turner
+                en una pieza
+                fundamental
+                de la historia.
+            </p>
+
+            <p>
+                Jack, Will
+                y Elizabeth
+                enfrentan
+                numerosos peligros,
+                combates,
+                persecuciones
+                y traiciones.
+                Mientras tanto,
+                Jack intenta
+                recuperar
+                el Perla Negra,
+                barco que Barbossa
+                le arrebató
+                años atrás.
+            </p>
+
+            <p>
+                Finalmente,
+                los protagonistas
+                logran romper
+                la maldición.
+                Jack derrota
+                a Barbossa
+                y recupera
+                la oportunidad
+                de volver
+                a navegar
+                como capitán
+                del Perla Negra.
+                Will y Elizabeth
+                también consiguen
+                estar juntos,
+                después
+                de superar
+                los conflictos
+                que enfrentaron.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERSONAJES -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            PERSONAJES <span>PRINCIPALES</span>
+        </h2>
+
+        <div class="personajes">
+
+            <article class="personaje">
+
+                <h3>Jack Sparrow</h3>
+
+                <p class="actor">
+                    Interpretado por Johnny Depp
+                </p>
+
+                <p>
+                    Capitán pirata
+                    astuto,
+                    impredecible
+                    y carismático.
+                    Busca recuperar
+                    su barco,
+                    el Perla Negra,
+                    utilizando
+                    su inteligencia,
+                    su capacidad
+                    de improvisación
+                    y sus engaños.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Will Turner</h3>
+
+                <p class="actor">
+                    Interpretado por Orlando Bloom
+                </p>
+
+                <p>
+                    Joven herrero
+                    que decide
+                    emprender
+                    una peligrosa
+                    aventura
+                    para rescatar
+                    a Elizabeth.
+                    Es valiente,
+                    leal
+                    y descubre
+                    secretos
+                    sobre
+                    su origen familiar.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Elizabeth Swann</h3>
+
+                <p class="actor">
+                    Interpretada por Keira Knightley
+                </p>
+
+                <p>
+                    Hija
+                    del gobernador
+                    de Port Royal.
+                    Es inteligente,
+                    decidida
+                    y valiente.
+                    A lo largo
+                    de la película
+                    demuestra
+                    que puede
+                    enfrentar peligros
+                    y tomar
+                    sus propias decisiones.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Héctor Barbossa</h3>
+
+                <p class="actor">
+                    Interpretado por Geoffrey Rush
+                </p>
+
+                <p>
+                    Capitán
+                    del Perla Negra
+                    y principal
+                    antagonista.
+                    Lidera
+                    una tripulación
+                    de piratas
+                    malditos
+                    y busca
+                    desesperadamente
+                    recuperar
+                    su condición humana.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>James Norrington</h3>
+
+                <p class="actor">
+                    Interpretado por Jack Davenport
+                </p>
+
+                <p>
+                    Oficial
+                    de la Marina Real
+                    británica
+                    que persigue
+                    a los piratas.
+                    Está enamorado
+                    de Elizabeth
+                    y representa
+                    el orden
+                    y la autoridad
+                    de Port Royal.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Joshamee Gibbs</h3>
+
+                <p class="actor">
+                    Interpretado por Kevin McNally
+                </p>
+
+                <p>
+                    Marinero
+                    experimentado
+                    que conoce
+                    numerosas
+                    historias
+                    y supersticiones
+                    sobre el mar.
+                    Se convierte
+                    en un aliado
+                    importante
+                    de Jack Sparrow.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ELEMENTOS DE AVENTURA -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            ELEMENTOS DE <span>AVENTURA</span>
+        </h2>
+
+        <div class="elementos">
+
+            <article class="elemento">
+
+                <h3>🏴‍☠️ Piratas y barcos</h3>
+
+                <p>
+                    La historia
+                    se desarrolla
+                    principalmente
+                    en el mar
+                    y presenta
+                    barcos piratas,
+                    combates navales,
+                    persecuciones
+                    y exploraciones.
+                </p>
+
+            </article>
+
+            <article class="elemento">
+
+                <h3>🪙 El tesoro maldito</h3>
+
+                <p>
+                    Un conjunto
+                    de monedas
+                    robadas
+                    provoca
+                    una maldición
+                    que impulsa
+                    gran parte
+                    de los conflictos
+                    de la película.
+                </p>
+
+            </article>
+
+            <article class="elemento">
+
+                <h3>⚔️ Peligros y enfrentamientos</h3>
+
+                <p>
+                    Los protagonistas
+                    deben superar
+                    enemigos,
+                    duelos,
+                    traiciones
+                    y situaciones
+                    inesperadas
+                    para alcanzar
+                    sus objetivos.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ANÁLISIS NARRATIVO -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            RELACIÓN CON EL
+            <span>SUBGÉNERO DE AVENTURAS</span>
+        </h2>
+
+        <div class="analisis">
+
+            <p>
+                Piratas del Caribe:
+                La maldición del Perla Negra
+                pertenece
+                al subgénero
+                de aventuras
+                porque presenta
+                una historia
+                llena de viajes,
+                enfrentamientos,
+                exploraciones,
+                búsquedas
+                y situaciones
+                peligrosas.
+                Los protagonistas
+                deben superar
+                distintos obstáculos
+                para alcanzar
+                sus objetivos,
+                mientras
+                la narración
+                combina acción,
+                suspenso,
+                humor
+                y elementos
+                fantásticos.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Viajes:</strong>
+                    los personajes
+                    recorren
+                    el mar Caribe
+                    y diferentes
+                    islas
+                    durante
+                    sus aventuras.
+                </li>
+
+                <li>
+                    <strong>Objetivos:</strong>
+                    Jack desea
+                    recuperar
+                    su barco,
+                    mientras
+                    Will intenta
+                    rescatar
+                    a Elizabeth.
+                </li>
+
+                <li>
+                    <strong>Obstáculos:</strong>
+                    enfrentan
+                    piratas malditos,
+                    persecuciones,
+                    combates
+                    y traiciones.
+                </li>
+
+                <li>
+                    <strong>Acción:</strong>
+                    contiene
+                    batallas navales,
+                    duelos
+                    de espadas
+                    y escenas
+                    de peligro.
+                </li>
+
+                <li>
+                    <strong>Fantasía:</strong>
+                    incluye
+                    una maldición
+                    sobrenatural
+                    y una tripulación
+                    de piratas
+                    que no puede morir.
+                </li>
+
+                <li>
+                    <strong>Transformación:</strong>
+                    los personajes
+                    desarrollan
+                    valentía,
+                    confianza
+                    y nuevas
+                    relaciones
+                    durante
+                    el viaje.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- SIGUIENTE PELÍCULA -->
+    <section class="siguiente">
+
+        <div>
+
+            <h2>¡LA AVENTURA CONTINÚA!</h2>
+
+            <p>
+                Dejamos atrás
+                los barcos piratas
+                para entrar
+                a un videojuego
+                lleno de animales,
+                trampas
+                y desafíos
+                inesperados.
+            </p>
+
+        </div>
+
+        <a href="jumanji.html"
+           class="boton boton-rojo">
+            SIGUIENTE: JUMANJI →
+        </a>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

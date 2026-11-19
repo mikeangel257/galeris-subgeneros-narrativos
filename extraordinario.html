@@ -1,0 +1,1183 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ficha técnica, sinopsis, personajes y análisis narrativo de Extraordinario (Wonder, 2017).">
+
+<title>Extraordinario | Narrativa+</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 19px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d7;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA CINEMATOGRÁFICA */
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    padding: 145px 7% 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: url("extraordinario.jpg");
+    background-size: cover;
+    background-position: center 30%;
+    filter: blur(8px) brightness(.35);
+    transform: scale(1.1);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.78) 50%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.hero-contenido {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(210px, 340px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+    animation: aparecer 1.2s ease both;
+}
+
+.poster-principal {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(229,9,20,.15);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.etiqueta {
+    color: #ff3b46;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5.4vw, 76px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px #000;
+    overflow-wrap: anywhere;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.metadatos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.metadatos span {
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.40);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-descripcion {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 25px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    transition: transform .3s, background .3s, box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,9,20,.20);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229,9,20,.40);
+}
+
+.boton-gris {
+    background: rgba(120,120,120,.45);
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.65);
+    transform: translateY(-4px);
+}
+
+/* SECCIONES */
+.seccion {
+    padding: 75px 7%;
+}
+
+.seccion-alternativa {
+    background: #111;
+}
+
+.titulo-seccion {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+/* FICHA TÉCNICA */
+.ficha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.ficha-item {
+    padding: 22px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    transition: border-color .3s, transform .3s;
+}
+
+.ficha-item:hover {
+    border-color: #e50914;
+    transform: translateY(-3px);
+}
+
+.ficha-item strong {
+    display: block;
+    color: #ff4650;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ficha-item p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* SINOPSIS */
+.texto {
+    max-width: 1000px;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.texto p + p {
+    margin-top: 20px;
+}
+
+/* PERSONAJES */
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.personaje {
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #303030;
+    border-radius: 14px;
+    transition: transform .3s, border-color .3s;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.personaje h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.actor {
+    color: #ff4650;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.personaje p:last-child {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ANÁLISIS */
+.analisis {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #1d1d1d, #111);
+    border-left: 5px solid #e50914;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.analisis p {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.9;
+}
+
+.analisis ul {
+    margin-top: 22px;
+    padding-left: 22px;
+}
+
+.analisis li {
+    margin-bottom: 13px;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+/* SIGUIENTE PÁGINA */
+.siguiente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 50px 7%;
+    background: #151515;
+    border-top: 1px solid #303030;
+}
+
+.siguiente h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.siguiente p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .personajes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5% 20px;
+        background: #111;
+        border-bottom: 1px solid #333;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #292929;
+    }
+
+    .hero {
+        padding: 125px 6% 65px;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .poster-principal {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(35px, 8vw, 65px);
+    }
+
+    .metadatos,
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+    .seccion {
+        padding: 60px 6%;
+    }
+
+    .ficha {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .personajes {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .analisis {
+        padding: 23px;
+    }
+
+    .texto,
+    .analisis p {
+        font-size: 15px;
+    }
+
+    .siguiente {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ PERSONALIZADO DE REALISTA -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de realista">
+        <a href="galeria.html">Menú principal</a>
+        <a href="realista.html">Realista</a>
+
+        <a href="en-busca-de-la-felicidad.html">
+            En busca de la felicidad
+        </a>
+
+        <a href="extraordinario.html"
+           class="activo"
+           aria-current="page">
+            Extraordinario
+        </a>
+
+        <a href="romper-el-cerdito.html">
+            Romper el cerdito
+        </a>
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- PORTADA DE LA PELÍCULA -->
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <img
+                src="extraordinario.jpg"
+                alt="Póster de Extraordinario"
+                class="poster-principal">
+
+            <div class="hero-texto">
+
+                <p class="etiqueta">
+                    REALISTA · DRAMA · EMPATÍA
+                </p>
+
+                <h1>
+                    <span>EXTRAORDINARIO</span>
+                </h1>
+
+                <div class="metadatos">
+                    <span>2017</span>
+                    <span>113 minutos</span>
+                    <span>Drama familiar</span>
+                </div>
+
+                <p class="hero-descripcion">
+                    August Pullman es un niño
+                    con diferencias faciales
+                    que, después de estudiar
+                    en casa durante años,
+                    comienza a asistir
+                    a una escuela.
+                    Allí tendrá que enfrentar
+                    miradas, prejuicios
+                    y situaciones difíciles,
+                    mientras descubre
+                    el valor de la amistad,
+                    la empatía y la aceptación.
+                </p>
+
+                <div class="acciones">
+
+                    <a href="#ficha"
+                       class="boton boton-rojo">
+                        ▶ VER FICHA TÉCNICA
+                    </a>
+
+                    <a href="realista.html"
+                       class="boton boton-gris">
+                        ← VOLVER A REALISTA
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FICHA TÉCNICA -->
+    <section class="seccion" id="ficha">
+
+        <h2 class="titulo-seccion">
+            FICHA <span>TÉCNICA</span>
+        </h2>
+
+        <div class="ficha">
+
+            <div class="ficha-item">
+                <strong>Título original</strong>
+                <p>Wonder</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Año de estreno</strong>
+                <p>2017</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Director</strong>
+                <p>Stephen Chbosky</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Guionistas</strong>
+                <p>
+                    Stephen Chbosky,
+                    Steve Conrad
+                    y Jack Thorne
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>País de producción</strong>
+                <p>Estados Unidos</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Duración</strong>
+                <p>113 minutos</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Género cinematográfico</strong>
+                <p>Drama familiar</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Basada en</strong>
+                <p>
+                    La novela Wonder,
+                    de R. J. Palacio,
+                    publicada en 2012
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Reparto principal</strong>
+                <p>
+                    Jacob Tremblay,
+                    Julia Roberts,
+                    Owen Wilson,
+                    Izabela Vidovic
+                    y Noah Jupe
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Música original</strong>
+                <p>Marcelo Zarvos</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SINOPSIS -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            SINOPSIS <span>DE LA PELÍCULA</span>
+        </h2>
+
+        <div class="texto">
+
+            <p>
+                August Pullman,
+                conocido como Auggie,
+                es un niño de diez años
+                que nació con diferencias
+                faciales y ha pasado
+                por numerosas cirugías.
+                Debido a sus tratamientos
+                médicos, ha recibido
+                educación en casa
+                durante gran parte
+                de su infancia.
+            </p>
+
+            <p>
+                Sus padres, Isabel y Nate,
+                deciden que ha llegado
+                el momento de que Auggie
+                asista a una escuela
+                convencional.
+                Aunque el niño siente
+                miedo e inseguridad,
+                comienza una nueva etapa
+                en Beecher Prep,
+                donde conocerá
+                a compañeros
+                y profesores.
+            </p>
+
+            <p>
+                Durante sus primeros días,
+                Auggie enfrenta
+                miradas incómodas,
+                comentarios crueles
+                y situaciones de acoso
+                por parte de algunos
+                estudiantes.
+                Sin embargo,
+                también encuentra
+                personas dispuestas
+                a conocerlo
+                más allá de
+                su apariencia física.
+            </p>
+
+            <p>
+                Uno de sus primeros
+                amigos es Jack Will,
+                aunque su relación
+                atraviesa momentos
+                difíciles.
+                También conoce
+                a Summer,
+                una compañera
+                que decide acercarse
+                a él y tratarlo
+                con respeto.
+            </p>
+
+            <p>
+                Mientras Auggie
+                aprende a desenvolverse
+                en la escuela,
+                la película también
+                muestra las experiencias
+                de su hermana Via
+                y de otros personajes,
+                permitiendo comprender
+                cómo cada integrante
+                de la familia
+                enfrenta sus propios
+                desafíos.
+            </p>
+
+            <p>
+                Con el paso del tiempo,
+                Auggie demuestra
+                su inteligencia,
+                sentido del humor
+                y valentía.
+                Gracias a sus experiencias
+                y al apoyo de quienes
+                lo rodean,
+                comienza a construir
+                amistades verdaderas
+                y a ganar confianza
+                en sí mismo.
+            </p>
+
+            <p>
+                Al finalizar
+                el año escolar,
+                Auggie recibe
+                un reconocimiento
+                por su fortaleza
+                y su influencia
+                positiva en la comunidad.
+                La historia transmite
+                un mensaje sobre
+                la importancia
+                de la empatía,
+                la bondad
+                y el respeto
+                hacia las diferencias.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERSONAJES -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            PERSONAJES <span>PRINCIPALES</span>
+        </h2>
+
+        <div class="personajes">
+
+            <article class="personaje">
+
+                <h3>August "Auggie" Pullman</h3>
+
+                <p class="actor">
+                    Interpretado por Jacob Tremblay
+                </p>
+
+                <p>
+                    Protagonista de la película.
+                    Es un niño inteligente,
+                    curioso y aficionado
+                    a la ciencia.
+                    Aprende a enfrentar
+                    los prejuicios
+                    y a confiar
+                    en sus capacidades.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Isabel Pullman</h3>
+
+                <p class="actor">
+                    Interpretada por Julia Roberts
+                </p>
+
+                <p>
+                    Madre de Auggie.
+                    Es una mujer
+                    cariñosa y dedicada
+                    que ha acompañado
+                    a su hijo durante
+                    sus tratamientos
+                    y su educación.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Nate Pullman</h3>
+
+                <p class="actor">
+                    Interpretado por Owen Wilson
+                </p>
+
+                <p>
+                    Padre de Auggie.
+                    Tiene un carácter
+                    comprensivo
+                    y utiliza el humor
+                    para ayudar
+                    a su hijo
+                    a superar momentos
+                    difíciles.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Olivia "Via" Pullman</h3>
+
+                <p class="actor">
+                    Interpretada por Izabela Vidovic
+                </p>
+
+                <p>
+                    Hermana mayor
+                    de Auggie.
+                    Lo quiere profundamente,
+                    aunque también
+                    enfrenta sentimientos
+                    de soledad
+                    y busca construir
+                    su propia identidad.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Jack Will</h3>
+
+                <p class="actor">
+                    Interpretado por Noah Jupe
+                </p>
+
+                <p>
+                    Compañero de escuela
+                    que se convierte
+                    en amigo de Auggie.
+                    Su relación
+                    atraviesa conflictos,
+                    pero aprende
+                    la importancia
+                    de la lealtad
+                    y la amistad.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Summer Dawson</h3>
+
+                <p class="actor">
+                    Interpretada por Millie Davis
+                </p>
+
+                <p>
+                    Compañera de Auggie
+                    que lo trata
+                    con amabilidad
+                    y respeto.
+                    Su comportamiento
+                    demuestra que
+                    una amistad auténtica
+                    no depende
+                    de las apariencias.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ANÁLISIS NARRATIVO -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            RELACIÓN CON EL
+            <span>REALISMO</span>
+        </h2>
+
+        <div class="analisis">
+
+            <p>
+                Extraordinario presenta
+                características
+                del realismo porque
+                desarrolla situaciones
+                creíbles relacionadas
+                con la vida escolar,
+                la convivencia familiar,
+                la discriminación
+                y la aceptación personal.
+                Aunque es una historia
+                de ficción, sus conflictos
+                representan experiencias
+                que pueden ocurrir
+                en la sociedad.
+                La película invita
+                a reflexionar
+                sobre la importancia
+                de respetar
+                las diferencias
+                y comprender
+                los sentimientos
+                de los demás.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Situaciones cotidianas:</strong>
+                    presenta experiencias
+                    escolares,
+                    problemas familiares
+                    y relaciones
+                    entre compañeros.
+                </li>
+
+                <li>
+                    <strong>Personajes creíbles:</strong>
+                    Auggie y su familia
+                    experimentan emociones
+                    como miedo,
+                    inseguridad,
+                    alegría y esperanza.
+                </li>
+
+                <li>
+                    <strong>Problemas sociales:</strong>
+                    aborda el acoso escolar,
+                    los prejuicios
+                    y la discriminación
+                    por la apariencia física.
+                </li>
+
+                <li>
+                    <strong>Ambientes reconocibles:</strong>
+                    la historia
+                    se desarrolla
+                    principalmente
+                    en una escuela,
+                    una vivienda
+                    y espacios públicos.
+                </li>
+
+                <li>
+                    <strong>Relaciones humanas:</strong>
+                    destaca el papel
+                    de la familia,
+                    los amigos
+                    y los maestros
+                    en el desarrollo
+                    personal.
+                </li>
+
+                <li>
+                    <strong>Reflexión social:</strong>
+                    promueve la empatía,
+                    el respeto,
+                    la inclusión
+                    y la bondad
+                    hacia los demás.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- SIGUIENTE OBRA -->
+    <section class="siguiente">
+
+        <div>
+            <h2>UNA HISTORIA SOBRE EL VALOR DE LAS COSAS...</h2>
+
+            <p>
+                Nuestra siguiente lectura
+                presenta a un niño
+                que desarrolla
+                un vínculo especial
+                con una alcancía
+                y descubre que
+                los sentimientos
+                pueden ser más importantes
+                que el dinero.
+            </p>
+        </div>
+
+        <a href="romper-el-cerdito.html"
+           class="boton boton-rojo">
+            SIGUIENTE: ROMPER EL CERDITO →
+        </a>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

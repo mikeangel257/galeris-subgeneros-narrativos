@@ -1,0 +1,1086 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ficha literaria, sinopsis, personajes y análisis de Don Quijote de la Mancha, de Miguel de Cervantes.">
+
+<title>Don Quijote de la Mancha | Narrativa+</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+
+    padding: 19px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d7;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA LITERARIA */
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    padding: 145px 7% 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image: url("quijote.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(.35);
+    transform: scale(1.1);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.77) 50%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.hero-contenido {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: minmax(210px, 340px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+
+    animation: aparecer 1.2s ease both;
+}
+
+.portada-libro {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(229,9,20,.12);
+
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.etiqueta {
+    color: #ff3b46;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5.7vw, 80px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px #000;
+}
+
+.metadatos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.metadatos span {
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.40);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-descripcion {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 16px 25px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+
+    transition:
+        transform .3s,
+        background .3s,
+        box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,9,20,.20);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229,9,20,.40);
+}
+
+.boton-gris {
+    background: rgba(120,120,120,.45);
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.65);
+    transform: translateY(-4px);
+}
+
+/* SECCIONES */
+.seccion {
+    padding: 75px 7%;
+}
+
+.seccion-alternativa {
+    background: #111;
+}
+
+.titulo-seccion {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+/* FICHA LITERARIA */
+.ficha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.ficha-item {
+    padding: 22px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 12px;
+
+    transition:
+        border-color .3s,
+        transform .3s;
+}
+
+.ficha-item:hover {
+    border-color: #e50914;
+    transform: translateY(-3px);
+}
+
+.ficha-item strong {
+    display: block;
+    color: #ff4650;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ficha-item p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* SINOPSIS */
+.texto {
+    max-width: 1000px;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.texto p + p {
+    margin-top: 20px;
+}
+
+/* PERSONAJES */
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.personaje {
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #303030;
+    border-radius: 14px;
+
+    transition:
+        transform .3s,
+        border-color .3s;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.personaje h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.personaje p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ANÁLISIS */
+.analisis {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #1d1d1d, #111);
+    border-left: 5px solid #e50914;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.analisis p {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.9;
+}
+
+.analisis ul {
+    margin-top: 22px;
+    padding-left: 22px;
+}
+
+.analisis li {
+    margin-bottom: 13px;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+/* NAVEGACIÓN FINAL */
+.siguiente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+
+    padding: 50px 7%;
+    background: #151515;
+    border-top: 1px solid #303030;
+}
+
+.siguiente h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.siguiente p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .personajes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 10px 5% 20px;
+        background: #111;
+        border-bottom: 1px solid #333;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #292929;
+    }
+
+    .hero {
+        padding: 125px 6% 65px;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .portada-libro {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 8vw, 60px);
+    }
+
+    .metadatos,
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+    .seccion {
+        padding: 60px 6%;
+    }
+
+    .ficha {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .personajes {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .analisis {
+        padding: 23px;
+    }
+
+    .texto,
+    .analisis p {
+        font-size: 15px;
+    }
+
+    .siguiente {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ DE COMEDIA -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de comedia">
+        <a href="galeria.html">Menú principal</a>
+        <a href="comedia.html">Comedia</a>
+        <a href="mi-pobre-angelito.html">
+            Mi pobre angelito
+        </a>
+        <a href="donde-estan-las-rubias.html">
+            ¿Y dónde están las rubias?
+        </a>
+        <a href="don-quijote.html"
+           class="activo"
+           aria-current="page">
+            Don Quijote
+        </a>
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- PORTADA DEL LIBRO -->
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <img
+                src="quijote.jpg"
+                alt="Portada de Don Quijote de la Mancha"
+                class="portada-libro">
+
+            <div class="hero-texto">
+
+                <p class="etiqueta">
+                    COMEDIA · PARODIA · LITERATURA CLÁSICA
+                </p>
+
+                <h1>DON QUIJOTE DE LA MANCHA</h1>
+
+                <div class="metadatos">
+                    <span>1605 y 1615</span>
+                    <span>Miguel de Cervantes</span>
+                    <span>Novela / Sátira / Parodia</span>
+                </div>
+
+                <p class="hero-descripcion">
+                    Un hombre apasionado por
+                    los libros de caballerías
+                    decide convertirse en
+                    caballero andante.
+                    Junto a su escudero
+                    Sancho Panza, emprende
+                    aventuras en las que
+                    su imaginación transforma
+                    situaciones cotidianas
+                    en extraordinarios desafíos.
+                </p>
+
+                <div class="acciones">
+
+                    <a href="#ficha"
+                       class="boton boton-rojo">
+                        ▶ VER FICHA LITERARIA
+                    </a>
+
+                    <a href="comedia.html"
+                       class="boton boton-gris">
+                        ← VOLVER A COMEDIA
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FICHA LITERARIA -->
+    <section class="seccion" id="ficha">
+
+        <h2 class="titulo-seccion">
+            FICHA <span>LITERARIA</span>
+        </h2>
+
+        <div class="ficha">
+
+            <div class="ficha-item">
+                <strong>Título de la obra</strong>
+                <p>Don Quijote de la Mancha</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Autor</strong>
+                <p>Miguel de Cervantes Saavedra</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Primera parte</strong>
+                <p>1605</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Segunda parte</strong>
+                <p>1615</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>País de origen</strong>
+                <p>España</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Género literario</strong>
+                <p>Narrativo</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Tipo de obra</strong>
+                <p>Novela</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Elementos cómicos</strong>
+                <p>Parodia, sátira, ironía y humor de situaciones</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Ambientación</strong>
+                <p>España, principalmente La Mancha</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Personajes centrales</strong>
+                <p>Don Quijote y Sancho Panza</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SINOPSIS -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            SINOPSIS <span>DE LA OBRA</span>
+        </h2>
+
+        <div class="texto">
+
+            <p>
+                Alonso Quijano es un hidalgo
+                que vive en La Mancha,
+                España. Debido a su enorme
+                afición por los libros
+                de caballerías, comienza
+                a confundir las historias
+                que lee con la realidad.
+            </p>
+
+            <p>
+                Convencido de que debe
+                convertirse en un caballero
+                andante, adopta el nombre
+                de Don Quijote de la Mancha,
+                prepara una antigua armadura
+                y decide recorrer los caminos
+                para ayudar a los necesitados
+                y combatir las injusticias.
+            </p>
+
+            <p>
+                Don Quijote elige como
+                caballo a Rocinante
+                y considera a Dulcinea
+                del Toboso la dama
+                a quien dedicará
+                sus hazañas.
+                Posteriormente, convence
+                a Sancho Panza, un campesino,
+                para que lo acompañe
+                como escudero.
+            </p>
+
+            <p>
+                Durante sus viajes,
+                Don Quijote interpreta
+                la realidad de una manera
+                completamente distinta.
+                En una de las escenas
+                más famosas, confunde
+                unos molinos de viento
+                con gigantes y decide
+                enfrentarlos.
+            </p>
+
+            <p>
+                A través de aventuras,
+                conversaciones y situaciones
+                divertidas, la novela
+                presenta el contraste
+                entre los ideales
+                de Don Quijote y
+                el sentido práctico
+                de Sancho Panza.
+            </p>
+
+            <p>
+                La obra combina humor,
+                crítica social y reflexión
+                sobre la imaginación,
+                la amistad, los sueños
+                y la diferencia
+                entre fantasía y realidad.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERSONAJES -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            PERSONAJES <span>PRINCIPALES</span>
+        </h2>
+
+        <div class="personajes">
+
+            <article class="personaje">
+
+                <h3>Don Quijote</h3>
+
+                <p>
+                    Protagonista de la novela.
+                    Es un hidalgo que desea
+                    convertirse en caballero
+                    andante. Su imaginación,
+                    idealismo y manera
+                    de interpretar la realidad
+                    provocan situaciones
+                    cómicas y reflexivas.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Sancho Panza</h3>
+
+                <p>
+                    Campesino que acompaña
+                    a Don Quijote como escudero.
+                    Es práctico, ingenioso
+                    y utiliza refranes
+                    constantemente.
+                    Su personalidad contrasta
+                    con la de su compañero.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Dulcinea del Toboso</h3>
+
+                <p>
+                    Mujer idealizada
+                    por Don Quijote.
+                    Aunque su presencia
+                    directa es limitada,
+                    representa el amor
+                    y los ideales caballerescos
+                    que motivan al protagonista.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Rocinante</h3>
+
+                <p>
+                    Caballo de Don Quijote.
+                    Es un animal viejo
+                    y delgado, pero
+                    su dueño lo considera
+                    digno de un gran
+                    caballero andante.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>El cura y el barbero</h3>
+
+                <p>
+                    Conocidos de Don Quijote
+                    que intentan ayudarlo
+                    y hacerlo regresar
+                    a su hogar.
+                    Participan en varios
+                    episodios de la historia.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Sansón Carrasco</h3>
+
+                <p>
+                    Bachiller que aparece
+                    en la segunda parte
+                    de la novela.
+                    Intenta intervenir
+                    en las aventuras
+                    de Don Quijote
+                    para conseguir
+                    que abandone
+                    su vida de caballero.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ANÁLISIS NARRATIVO -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            RELACIÓN CON LA
+            <span>COMEDIA</span>
+        </h2>
+
+        <div class="analisis">
+
+            <p>
+                Don Quijote de la Mancha
+                es una novela que contiene
+                importantes elementos
+                de comedia porque utiliza
+                la parodia, la ironía,
+                los malentendidos
+                y el contraste entre
+                personajes para generar
+                situaciones humorísticas.
+                Al mismo tiempo, presenta
+                una crítica a las novelas
+                de caballerías y a diversas
+                costumbres de su época.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Parodia:</strong>
+                    la obra imita y
+                    ridiculiza elementos
+                    tradicionales de
+                    las historias
+                    de caballeros.
+                </li>
+
+                <li>
+                    <strong>Situaciones absurdas:</strong>
+                    Don Quijote confunde
+                    objetos cotidianos
+                    con enemigos
+                    o amenazas imaginarias.
+                </li>
+
+                <li>
+                    <strong>Ironía:</strong>
+                    el lector comprende
+                    la realidad de manera
+                    distinta al protagonista,
+                    lo que produce
+                    situaciones cómicas.
+                </li>
+
+                <li>
+                    <strong>Contraste de personajes:</strong>
+                    Don Quijote es idealista,
+                    mientras que Sancho Panza
+                    suele mostrar
+                    una visión más práctica.
+                </li>
+
+                <li>
+                    <strong>Crítica social:</strong>
+                    Cervantes utiliza
+                    el humor para cuestionar
+                    comportamientos,
+                    creencias y costumbres.
+                </li>
+
+                <li>
+                    <strong>Humor verbal:</strong>
+                    los diálogos,
+                    refranes y juegos
+                    de lenguaje contribuyen
+                    al carácter cómico
+                    de la narración.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- SIGUIENTE SUBGÉNERO -->
+    <section class="siguiente">
+
+        <div>
+            <h2>¡COMEDIA COMPLETADA!</h2>
+
+            <p>
+                Después de tantas risas,
+                llega el momento de explorar
+                historias llenas de misterio,
+                suspenso y miedo.
+            </p>
+        </div>
+
+        <a href="terror.html"
+           class="boton boton-rojo">
+            SIGUIENTE: TERROR →
+        </a>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

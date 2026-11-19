@@ -1,0 +1,1003 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Explora el subgénero narrativo histórico a través de Titanic, El niño con el pijama de rayas y La culpa es de los tlaxcaltecas.">
+
+<title>Histórico | Narrativa+</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 95px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    padding: 20px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    color: #e50914;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+}
+
+nav a {
+    color: #d7d7d7;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA CINEMATOGRÁFICA */
+.portada {
+    min-height: 100vh;
+    min-height: 100svh;
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+    padding: 150px 7% 100px;
+    overflow: hidden;
+}
+
+.portada::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+
+    background-image: url("portada-historico.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: zoomFondo 18s ease-in-out infinite alternate;
+}
+
+.portada::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.76) 45%,
+        rgba(0,0,0,.25) 100%
+    );
+}
+
+.portada-contenido {
+    max-width: 850px;
+    animation: aparecer 1.2s ease both;
+}
+
+.etiqueta {
+    color: #ff404b;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin-bottom: 22px;
+}
+
+.portada h1 {
+    font-size: clamp(48px, 9vw, 115px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+    text-shadow: 0 5px 25px #000;
+}
+
+.portada h1 span {
+    color: #e50914;
+}
+
+.descripcion {
+    font-size: clamp(16px, 1.8vw, 20px);
+    line-height: 1.8;
+    color: #e5e5e5;
+    max-width: 670px;
+    text-shadow: 0 3px 12px #000;
+}
+
+.datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.dato {
+    background: rgba(0,0,0,.48);
+    border: 1px solid rgba(255,255,255,.20);
+    border-radius: 30px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 36px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 17px 28px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+
+    transition:
+        transform .3s,
+        background .3s,
+        box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 10px 30px rgba(229,9,20,.30);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(229,9,20,.50);
+}
+
+.boton-gris {
+    background: rgba(110,110,110,.45);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.60);
+    transform: translateY(-4px);
+}
+
+/* INFORMACIÓN */
+.informacion {
+    padding: 85px 7%;
+    background: linear-gradient(180deg, #101010, #080808);
+}
+
+.titulo-seccion {
+    font-size: clamp(27px, 3.5vw, 42px);
+    margin-bottom: 22px;
+    font-weight: 900;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+.informacion p {
+    max-width: 950px;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #c9c9c9;
+}
+
+/* CARACTERÍSTICAS */
+.caracteristicas {
+    padding: 35px 7% 75px;
+    background: #080808;
+}
+
+.caracteristicas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.caracteristica {
+    background: #171717;
+    border: 1px solid #303030;
+    border-radius: 13px;
+    padding: 28px;
+    transition: transform .3s, border-color .3s;
+}
+
+.caracteristica:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.caracteristica h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.caracteristica p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* GALERÍA */
+.contenido {
+    padding: 80px 7% 100px;
+    background: #101010;
+}
+
+.subtitulo {
+    color: #aaa;
+    font-size: 15px;
+    margin-bottom: 35px;
+    line-height: 1.7;
+}
+
+.obras {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.tarjeta {
+    background: #171717;
+    border: 1px solid #292929;
+    border-radius: 15px;
+    overflow: hidden;
+
+    transition:
+        transform .35s,
+        border-color .35s,
+        box-shadow .35s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px);
+    border-color: #e50914;
+    box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+.poster {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background: #252525;
+}
+
+.poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.tarjeta:hover .poster img {
+    transform: scale(1.07);
+}
+
+.tipo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    padding: 8px 13px;
+    background: #e50914;
+    border-radius: 6px;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.tipo.libro {
+    background: #a36a17;
+}
+
+.tarjeta-info {
+    padding: 25px;
+}
+
+.tarjeta-info h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.tarjeta-info p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    min-height: 72px;
+}
+
+.ver-obra {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #ff4650;
+    font-weight: 800;
+    font-size: 13px;
+    transition: gap .3s;
+}
+
+.ver-obra:hover {
+    gap: 17px;
+}
+
+/* NAVEGACIÓN FINAL */
+.navegacion-final {
+    padding: 45px 7% 75px;
+    background: #080808;
+    border-top: 1px solid #262626;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.navegacion-final p {
+    color: #aaa;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+footer {
+    padding: 30px 7%;
+    background: #080808;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomFondo {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.055);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .obras {
+        gap: 18px;
+    }
+
+    .tarjeta-info {
+        padding: 19px;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        background: #111;
+        padding: 10px 5% 20px;
+        max-height: 75vh;
+        overflow-y: auto;
+        border-bottom: 1px solid #333;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #282828;
+    }
+
+    .portada {
+        min-height: 90vh;
+        min-height: 90svh;
+        padding: 135px 6% 80px;
+    }
+
+    .portada h1 {
+        font-size: clamp(43px, 10vw, 85px);
+    }
+
+    .portada::after {
+        background: linear-gradient(
+            90deg,
+            rgba(0,0,0,.90),
+            rgba(0,0,0,.45)
+        );
+    }
+
+    .informacion,
+    .contenido,
+    .caracteristicas {
+        padding: 65px 6%;
+    }
+
+    .obras,
+    .caracteristicas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .obras,
+    .caracteristicas-grid {
+        grid-template-columns: 1fr;
+        max-width: 410px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .portada h1 {
+        font-size: clamp(40px, 11vw, 58px);
+    }
+
+    .descripcion {
+        font-size: 15px;
+    }
+
+    .acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tarjeta-info p {
+        min-height: 0;
+    }
+
+    .navegacion-final {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ PERSONALIZADO DE HISTÓRICO -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de histórico">
+        <a href="galeria.html">Menú principal</a>
+
+        <a href="historico.html"
+           class="activo"
+           aria-current="page">
+            Histórico
+        </a>
+
+        <a href="titanic.html">
+            Titanic
+        </a>
+
+        <a href="nino-pijama-rayas.html">
+            El niño con el pijama de rayas
+        </a>
+
+        <a href="culpa-tlaxcaltecas.html">
+            La culpa es de los tlaxcaltecas
+        </a>
+    </nav>
+
+</header>
+
+<!-- PORTADA PRINCIPAL -->
+<section class="portada">
+
+    <div class="portada-contenido">
+
+        <p class="etiqueta">
+            SUBGÉNERO NARRATIVO · 07
+        </p>
+
+        <h1>HIS<span>TÓRICO</span></h1>
+
+        <p class="descripcion">
+            Viaja a través del tiempo
+            y descubre historias ambientadas
+            en épocas del pasado.
+            Conoce acontecimientos,
+            personajes y conflictos
+            que permiten comprender
+            diferentes momentos
+            de la historia humana.
+        </p>
+
+        <div class="datos">
+            <span class="dato">2 Películas</span>
+            <span class="dato">1 Cuento literario</span>
+            <span class="dato">Historia y memoria</span>
+        </div>
+
+        <div class="acciones">
+
+            <a href="#contenido"
+               class="boton boton-rojo">
+                ▶ EXPLORAR CONTENIDO
+            </a>
+
+            <a href="galeria.html"
+               class="boton boton-gris">
+                ← VOLVER A LA GALERÍA
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EXPLICACIÓN -->
+<section class="informacion">
+
+    <h2 class="titulo-seccion">
+        ¿QUÉ ES LA NARRATIVA <span>HISTÓRICA?</span>
+    </h2>
+
+    <p>
+        El subgénero narrativo histórico
+        presenta relatos ambientados
+        en épocas del pasado
+        y puede incorporar acontecimientos,
+        personajes o contextos
+        que realmente existieron.
+        Estas historias combinan
+        la investigación histórica
+        con elementos narrativos
+        para recrear costumbres,
+        conflictos y formas de vida
+        de otras épocas.
+        Algunas obras representan
+        sucesos documentados,
+        mientras que otras
+        introducen personajes
+        y situaciones ficticias
+        dentro de un contexto histórico.
+        Su propósito es acercar
+        al público al pasado
+        y promover la reflexión
+        sobre sus consecuencias
+        en el presente.
+    </p>
+
+</section>
+
+<!-- CARACTERÍSTICAS -->
+<section class="caracteristicas">
+
+    <h2 class="titulo-seccion">
+        CARACTERÍSTICAS <span>PRINCIPALES</span>
+    </h2>
+
+    <div class="caracteristicas-grid">
+
+        <article class="caracteristica">
+            <h3>⏳ Épocas del pasado</h3>
+            <p>
+                Los acontecimientos
+                se desarrollan
+                en periodos históricos
+                reconocibles,
+                con escenarios,
+                vestimenta y costumbres
+                propias de cada época.
+            </p>
+        </article>
+
+        <article class="caracteristica">
+            <h3>📜 Contexto histórico</h3>
+            <p>
+                Las historias pueden
+                relacionarse con guerras,
+                cambios sociales,
+                acontecimientos políticos
+                o sucesos que marcaron
+                a diferentes sociedades.
+            </p>
+        </article>
+
+        <article class="caracteristica">
+            <h3>🎭 Historia y ficción</h3>
+            <p>
+                Puede combinar
+                hechos documentados
+                con personajes,
+                diálogos y conflictos
+                creados por el autor
+                para construir
+                una narración.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+<!-- OBRAS -->
+<main class="contenido" id="contenido">
+
+    <h2 class="titulo-seccion">
+        HISTORIAS <span>DEL PASADO</span>
+    </h2>
+
+    <p class="subtitulo">
+        Selecciona una película
+        o el cuento literario
+        para descubrir su ficha,
+        sinopsis y relación
+        con la narrativa histórica.
+    </p>
+
+    <div class="obras">
+
+        <!-- TITANIC -->
+        <article class="tarjeta">
+
+            <div class="poster">
+
+                <img
+                    src="titanic.jpg"
+                    alt="Póster de Titanic"
+                    loading="lazy">
+
+                <span class="tipo">PELÍCULA</span>
+
+            </div>
+
+            <div class="tarjeta-info">
+
+                <h3>Titanic</h3>
+
+                <p>
+                    Una historia
+                    de amor ficticia
+                    se desarrolla
+                    durante el viaje
+                    inaugural
+                    del Titanic
+                    y su trágico
+                    hundimiento
+                    en 1912.
+                </p>
+
+                <a href="titanic.html"
+                   class="ver-obra">
+                    VER FICHA COMPLETA →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- EL NIÑO CON EL PIJAMA DE RAYAS -->
+        <article class="tarjeta">
+
+            <div class="poster">
+
+                <img
+                    src="pijama.jpg"
+                    alt="Póster de El niño con el pijama de rayas"
+                    loading="lazy">
+
+                <span class="tipo">PELÍCULA</span>
+
+            </div>
+
+            <div class="tarjeta-info">
+
+                <h3>El niño con el pijama de rayas</h3>
+
+                <p>
+                    Durante la Segunda
+                    Guerra Mundial,
+                    un niño alemán
+                    desarrolla
+                    una amistad
+                    con un niño judío
+                    prisionero
+                    en un campo
+                    de concentración.
+                </p>
+
+                <a href="nino-pijama-rayas.html"
+                   class="ver-obra">
+                    VER FICHA COMPLETA →
+                </a>
+
+            </div>
+
+        </article>
+
+        <!-- LA CULPA ES DE LOS TLAXCALTECAS -->
+        <article class="tarjeta">
+
+            <div class="poster">
+
+                <img
+                    src="culpatlaxcalteca.jpg"
+                    alt="Portada de La culpa es de los tlaxcaltecas"
+                    loading="lazy">
+
+                <span class="tipo libro">
+                    CUENTO LITERARIO
+                </span>
+
+            </div>
+
+            <div class="tarjeta-info">
+
+                <h3>La culpa es de los tlaxcaltecas</h3>
+
+                <p>
+                    Una mujer
+                    experimenta
+                    una misteriosa
+                    conexión
+                    entre el México
+                    contemporáneo
+                    y el pasado
+                    de la Conquista.
+                </p>
+
+                <a href="culpa-tlaxcaltecas.html"
+                   class="ver-obra">
+                    VER FICHA LITERARIA →
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</main>
+
+<!-- SIGUIENTE PÁGINA -->
+<section class="navegacion-final">
+
+    <div>
+        <h2>¿LISTO PARA VIAJAR AL AÑO 1912?</h2>
+
+        <p>
+            Nuestra primera película
+            nos llevará a bordo
+            del Titanic,
+            uno de los barcos
+            más famosos
+            de la historia.
+        </p>
+    </div>
+
+    <a href="titanic.html"
+       class="boton boton-rojo">
+        SIGUIENTE: TITANIC →
+    </a>
+
+</section>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

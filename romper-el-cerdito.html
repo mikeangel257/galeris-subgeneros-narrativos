@@ -1,0 +1,1111 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="Ficha literaria, sinopsis, personajes y análisis realista del cuento Romper el cerdito, de Etgar Keret.">
+
+<title>Romper el cerdito | Narrativa+</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVEGACIÓN */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 19px 6%;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    transition: padding .3s, background .3s;
+}
+
+header.compacto {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: rgba(5,5,5,.97);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e50914;
+    letter-spacing: -1px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: white;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d7d7d7;
+    transition: color .3s;
+}
+
+nav a:hover,
+nav a.activo {
+    color: #ff3642;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 29px;
+    cursor: pointer;
+}
+
+/* PORTADA LITERARIA */
+.hero {
+    min-height: 90vh;
+    min-height: 90svh;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    padding: 145px 7% 90px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: url("cerdito.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(.35);
+    transform: scale(1.1);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.96) 0%,
+        rgba(0,0,0,.78) 50%,
+        rgba(0,0,0,.35) 100%
+    );
+}
+
+.hero-contenido {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: minmax(210px, 340px) 1fr;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+    animation: aparecer 1.2s ease both;
+}
+
+.portada-libro {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(229,9,20,.15);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.etiqueta {
+    color: #ff3b46;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5.4vw, 76px);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    text-shadow: 0 5px 20px #000;
+}
+
+.hero h1 span {
+    color: #e50914;
+}
+
+.metadatos {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.metadatos span {
+    padding: 8px 13px;
+    border: 1px solid rgba(255,255,255,.20);
+    background: rgba(0,0,0,.40);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-descripcion {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 25px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    transition: transform .3s, background .3s, box-shadow .3s;
+}
+
+.boton-rojo {
+    background: #e50914;
+    color: white;
+    box-shadow: 0 8px 25px rgba(229,9,20,.20);
+}
+
+.boton-rojo:hover {
+    background: #ff303c;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(229,9,20,.40);
+}
+
+.boton-gris {
+    background: rgba(120,120,120,.45);
+    backdrop-filter: blur(10px);
+}
+
+.boton-gris:hover {
+    background: rgba(150,150,150,.65);
+    transform: translateY(-4px);
+}
+
+/* SECCIONES */
+.seccion {
+    padding: 75px 7%;
+}
+
+.seccion-alternativa {
+    background: #111;
+}
+
+.titulo-seccion {
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.titulo-seccion span {
+    color: #e50914;
+}
+
+/* FICHA LITERARIA */
+.ficha {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+}
+
+.ficha-item {
+    padding: 22px;
+    background: #191919;
+    border: 1px solid #303030;
+    border-radius: 12px;
+    transition: border-color .3s, transform .3s;
+}
+
+.ficha-item:hover {
+    border-color: #e50914;
+    transform: translateY(-3px);
+}
+
+.ficha-item strong {
+    display: block;
+    color: #ff4650;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.ficha-item p {
+    font-size: 16px;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* SINOPSIS */
+.texto {
+    max-width: 1000px;
+    color: #ccc;
+    font-size: 17px;
+    line-height: 2;
+}
+
+.texto p + p {
+    margin-top: 20px;
+}
+
+/* PERSONAJES */
+.personajes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.personaje {
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #303030;
+    border-radius: 14px;
+    transition: transform .3s, border-color .3s;
+}
+
+.personaje:hover {
+    transform: translateY(-5px);
+    border-color: #e50914;
+}
+
+.personaje h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.personaje p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ANÁLISIS */
+.analisis {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #1d1d1d, #111);
+    border-left: 5px solid #e50914;
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.analisis p {
+    font-size: 17px;
+    color: #ddd;
+    line-height: 1.9;
+}
+
+.analisis ul {
+    margin-top: 22px;
+    padding-left: 22px;
+}
+
+.analisis li {
+    margin-bottom: 13px;
+    color: #ccc;
+    line-height: 1.7;
+}
+
+/* SIGUIENTE SUBGÉNERO */
+.siguiente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+    padding: 50px 7%;
+    background: #151515;
+    border-top: 1px solid #303030;
+}
+
+.siguiente h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.siguiente p {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 30px 7%;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+footer strong {
+    color: #e50914;
+}
+
+/* ANIMACIONES */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETAS */
+@media (max-width: 1050px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .personajes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* CELULARES */
+@media (max-width: 800px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5% 20px;
+        background: #111;
+        border-bottom: 1px solid #333;
+        max-height: 75vh;
+        overflow-y: auto;
+    }
+
+    nav.abierto {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #292929;
+    }
+
+    .hero {
+        padding: 125px 6% 65px;
+    }
+
+    .hero-contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .portada-libro {
+        max-width: 250px;
+        margin: auto;
+    }
+
+    .hero h1 {
+        font-size: clamp(35px, 8vw, 65px);
+    }
+
+    .metadatos,
+    .acciones {
+        justify-content: center;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+    .seccion {
+        padding: 60px 6%;
+    }
+
+    .ficha {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+    .personajes {
+        grid-template-columns: 1fr;
+    }
+
+    .acciones {
+        flex-direction: column;
+    }
+
+    .analisis {
+        padding: 23px;
+    }
+
+    .texto,
+    .analisis p {
+        font-size: 15px;
+    }
+
+    .siguiente {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENÚ PERSONALIZADO DE REALISTA -->
+<header id="header">
+
+    <a href="galeria.html" class="logo">
+        NARRATIVA<span>+</span>
+    </a>
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú"
+        aria-controls="menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación de realista">
+        <a href="galeria.html">Menú principal</a>
+        <a href="realista.html">Realista</a>
+
+        <a href="en-busca-de-la-felicidad.html">
+            En busca de la felicidad
+        </a>
+
+        <a href="extraordinario.html">
+            Extraordinario
+        </a>
+
+        <a href="romper-el-cerdito.html"
+           class="activo"
+           aria-current="page">
+            Romper el cerdito
+        </a>
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- PORTADA DEL CUENTO -->
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <img
+                src="cerdito.jpg"
+                alt="Portada de Romper el cerdito"
+                class="portada-libro">
+
+            <div class="hero-texto">
+
+                <p class="etiqueta">
+                    REALISTA · INFANCIA · VALORES
+                </p>
+
+                <h1>
+                    ROMPER
+                    <span>EL CERDITO</span>
+                </h1>
+
+                <div class="metadatos">
+                    <span>Etgar Keret</span>
+                    <span>Cuento</span>
+                    <span>Realismo contemporáneo</span>
+                </div>
+
+                <p class="hero-descripcion">
+                    Un niño desea
+                    un juguete,
+                    pero su padre
+                    decide enseñarle
+                    el valor del dinero
+                    mediante una alcancía
+                    con forma de cerdito.
+                    Lo que comienza
+                    como una lección
+                    sobre el ahorro
+                    termina convirtiéndose
+                    en una historia
+                    sobre el cariño,
+                    la empatía
+                    y la importancia
+                    de los sentimientos.
+                </p>
+
+                <div class="acciones">
+
+                    <a href="#ficha"
+                       class="boton boton-rojo">
+                        ▶ VER FICHA LITERARIA
+                    </a>
+
+                    <a href="realista.html"
+                       class="boton boton-gris">
+                        ← VOLVER A REALISTA
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FICHA LITERARIA -->
+    <section class="seccion" id="ficha">
+
+        <h2 class="titulo-seccion">
+            FICHA <span>LITERARIA</span>
+        </h2>
+
+        <div class="ficha">
+
+            <div class="ficha-item">
+                <strong>Título en español</strong>
+                <p>Romper el cerdito</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Título original</strong>
+                <p>Lishbor et ha-kupa</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Autor</strong>
+                <p>Etgar Keret</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Nacionalidad del autor</strong>
+                <p>Israelí</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Género literario</strong>
+                <p>Narrativo</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Subgénero</strong>
+                <p>Cuento realista contemporáneo</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Tipo de obra</strong>
+                <p>Cuento breve</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Narrador</strong>
+                <p>Primera persona</p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Personajes principales</strong>
+                <p>
+                    El niño,
+                    su padre
+                    y el cerdito
+                    de porcelana
+                </p>
+            </div>
+
+            <div class="ficha-item">
+                <strong>Temas principales</strong>
+                <p>
+                    Infancia, ahorro,
+                    consumismo,
+                    empatía, afecto
+                    y valores familiares
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SINOPSIS -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            SINOPSIS <span>DEL CUENTO</span>
+        </h2>
+
+        <div class="texto">
+
+            <p>
+                El cuento presenta
+                la historia de un niño
+                que desea comprar
+                un juguete de Bart Simpson.
+                Sin embargo, su padre
+                considera que no debe
+                obtener las cosas
+                sin esfuerzo
+                y decide enseñarle
+                el valor del dinero.
+            </p>
+
+            <p>
+                Para lograrlo,
+                el padre le entrega
+                una alcancía
+                con forma de cerdito.
+                El niño puede ganar
+                monedas si cumple
+                ciertas condiciones,
+                como terminar
+                su comida.
+                Después debe guardar
+                el dinero
+                dentro del cerdito.
+            </p>
+
+            <p>
+                Con el paso de los días,
+                el niño comienza
+                a desarrollar
+                un cariño especial
+                por la alcancía.
+                La llama Pesajson
+                y deja de verla
+                como un simple objeto
+                destinado a guardar
+                monedas.
+            </p>
+
+            <p>
+                Para él,
+                el cerdito se convierte
+                en una especie
+                de compañero.
+                Le habla,
+                observa su sonrisa
+                y siente que existe
+                un vínculo afectivo
+                entre ambos.
+            </p>
+
+            <p>
+                Cuando la alcancía
+                está llena,
+                el padre anuncia
+                que ha llegado
+                el momento
+                de romperla
+                para obtener
+                el dinero
+                y comprar
+                el juguete deseado.
+            </p>
+
+            <p>
+                El niño se angustia
+                ante la posibilidad
+                de destruir
+                a su querido cerdito.
+                Ya no le interesa
+                tanto conseguir
+                el juguete,
+                pues considera
+                que su alcancía
+                tiene un valor
+                sentimental
+                mucho mayor.
+            </p>
+
+            <p>
+                Finalmente,
+                el niño decide
+                salvar al cerdito
+                y lo deja
+                en un campo,
+                donde imagina
+                que podrá vivir
+                libre y feliz.
+                El final muestra
+                cómo el afecto
+                puede transformar
+                la manera
+                en que una persona
+                valora las cosas.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- PERSONAJES -->
+    <section class="seccion">
+
+        <h2 class="titulo-seccion">
+            PERSONAJES <span>PRINCIPALES</span>
+        </h2>
+
+        <div class="personajes">
+
+            <article class="personaje">
+
+                <h3>El niño</h3>
+
+                <p>
+                    Es el protagonista
+                    y narrador
+                    de la historia.
+                    Al principio
+                    desea un juguete,
+                    pero desarrolla
+                    un fuerte vínculo
+                    emocional
+                    con su alcancía.
+                    Representa
+                    la sensibilidad
+                    y la imaginación
+                    infantil.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>El padre</h3>
+
+                <p>
+                    Busca enseñarle
+                    a su hijo
+                    el valor del dinero
+                    y la importancia
+                    del esfuerzo.
+                    Sin embargo,
+                    no comprende
+                    inicialmente
+                    el cariño
+                    que el niño
+                    desarrolla
+                    por el cerdito.
+                </p>
+
+            </article>
+
+            <article class="personaje">
+
+                <h3>Pesajson</h3>
+
+                <p>
+                    Es la alcancía
+                    con forma
+                    de cerdito.
+                    Aunque se trata
+                    de un objeto,
+                    el niño
+                    le atribuye
+                    sentimientos
+                    y personalidad.
+                    Simboliza
+                    el afecto
+                    y el valor
+                    sentimental.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ANÁLISIS NARRATIVO -->
+    <section class="seccion seccion-alternativa">
+
+        <h2 class="titulo-seccion">
+            RELACIÓN CON EL
+            <span>REALISMO</span>
+        </h2>
+
+        <div class="analisis">
+
+            <p>
+                Romper el cerdito
+                presenta características
+                del realismo porque
+                desarrolla una situación
+                cotidiana relacionada
+                con la educación familiar,
+                el dinero y el aprendizaje
+                de valores.
+                Aunque el protagonista
+                imagina que su alcancía
+                tiene sentimientos,
+                no se presentan
+                acontecimientos
+                sobrenaturales.
+                El cuento utiliza
+                la perspectiva infantil
+                para mostrar
+                cómo los sentimientos
+                pueden ser más importantes
+                que el valor económico
+                de los objetos.
+            </p>
+
+            <ul>
+
+                <li>
+                    <strong>Situación cotidiana:</strong>
+                    un padre intenta
+                    enseñar a su hijo
+                    a ahorrar dinero
+                    para comprar
+                    un juguete.
+                </li>
+
+                <li>
+                    <strong>Personajes creíbles:</strong>
+                    el niño y su padre
+                    representan
+                    diferentes formas
+                    de comprender
+                    el dinero
+                    y los sentimientos.
+                </li>
+
+                <li>
+                    <strong>Conflicto familiar:</strong>
+                    existe una diferencia
+                    entre lo que
+                    el padre considera
+                    una lección
+                    y lo que
+                    el niño siente
+                    por la alcancía.
+                </li>
+
+                <li>
+                    <strong>Perspectiva infantil:</strong>
+                    la imaginación
+                    del protagonista
+                    permite observar
+                    el mundo
+                    desde una mirada
+                    inocente y sensible.
+                </li>
+
+                <li>
+                    <strong>Crítica al consumismo:</strong>
+                    el relato cuestiona
+                    la idea de que
+                    comprar objetos
+                    sea más importante
+                    que los vínculos
+                    afectivos.
+                </li>
+
+                <li>
+                    <strong>Reflexión moral:</strong>
+                    muestra que
+                    el cariño,
+                    la empatía
+                    y la compasión
+                    pueden tener
+                    mayor importancia
+                    que el dinero.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- SIGUIENTE SUBGÉNERO -->
+    <section class="siguiente">
+
+        <div>
+            <h2>¡REALISTA COMPLETADO!</h2>
+
+            <p>
+                Después de explorar
+                historias sobre
+                la superación,
+                la empatía
+                y los sentimientos,
+                viajaremos al pasado
+                para conocer relatos
+                inspirados en épocas
+                y acontecimientos históricos.
+            </p>
+        </div>
+
+        <a href="historico.html"
+           class="boton boton-rojo">
+            SIGUIENTE: HISTÓRICO →
+        </a>
+
+    </section>
+
+</main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <p>
+        <strong>NARRATIVA+</strong> |
+        Galería de Subgéneros Narrativos
+    </p>
+
+    <p>
+        CECyTE 24 · Cuahuixmatlac, Tlaxcala
+    </p>
+
+    <p>
+        Proyecto educativo de cine y literatura
+    </p>
+
+</footer>
+
+<script>
+const header = document.getElementById("header");
+const menu = document.getElementById("menu");
+const menuToggle = document.getElementById("menuToggle");
+
+// CAMBIAR NAV AL DESPLAZARSE
+window.addEventListener("scroll", function() {
+    header.classList.toggle(
+        "compacto",
+        window.scrollY > 50
+    );
+}, { passive: true });
+
+// ABRIR Y CERRAR MENÚ
+menuToggle.addEventListener("click", function() {
+    const abierto = menu.classList.toggle("abierto");
+
+    menuToggle.setAttribute("aria-expanded", abierto);
+    menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+    );
+
+    menuToggle.textContent = abierto ? "✕" : "☰";
+});
+
+// CERRAR MENÚ AL ELEGIR ENLACE
+document.querySelectorAll("#menu a").forEach(function(enlace) {
+    enlace.addEventListener("click", function() {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    });
+});
+
+// CERRAR CON ESCAPE
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape") {
+        menu.classList.remove("abierto");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+    }
+});
+</script>
+
+</body>
+</html>

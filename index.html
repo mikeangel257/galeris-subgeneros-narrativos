@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Explora ocho subgéneros narrativos a través de películas y cuentos.">
+
+    <title>Galería de Subgéneros Narrativos | Inicio</title>
+
+    <style>
+        /* CONFIGURACIÓN GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100svh;
+            background: #080808;
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* PORTADA PRINCIPAL */
+        .portada {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            isolation: isolate;
+            padding: 230px 25px 110px;
+            overflow: hidden;
+        }
+
+        /* IMAGEN DE FONDO */
+        .portada::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+
+            background-image: url("portada-principal.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+
+            animation: acercamiento 18s ease-in-out infinite alternate;
+        }
+
+        /* SOMBRA PARA LEER EL TEXTO */
+        .portada::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.05) 0%,
+                rgba(0,0,0,0.12) 27%,
+                rgba(0,0,0,0.40) 50%,
+                rgba(0,0,0,0.22) 78%,
+                rgba(0,0,0,0.10) 100%
+            );
+        }
+
+        /* CONTENEDOR CENTRAL */
+        .contenido {
+            width: 100%;
+            max-width: 1050px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+
+            animation: aparecer 1.5s ease both;
+        }
+
+        /* ETIQUETA SUPERIOR */
+        .etiqueta {
+            color: #ff4444;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 12px #000;
+        }
+
+        /* TÍTULO */
+        h1 {
+            font-size: clamp(40px, 6vw, 88px);
+            font-weight: 900;
+            line-height: 1.07;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+
+            text-shadow:
+                0 5px 15px rgba(0,0,0,0.9),
+                0 0 35px rgba(0,0,0,0.7);
+        }
+
+        h1 span {
+            display: block;
+            color: #e50914;
+
+            text-shadow:
+                0 5px 15px rgba(0,0,0,0.9),
+                0 0 25px rgba(229,9,20,0.35);
+        }
+
+        /* LÍNEA DECORATIVA */
+        .linea {
+            width: 105px;
+            height: 4px;
+            border-radius: 20px;
+            background: #e50914;
+            box-shadow: 0 0 18px rgba(229,9,20,0.7);
+        }
+
+        /* DESCRIPCIÓN */
+        .descripcion {
+            max-width: 690px;
+            font-size: clamp(16px, 1.8vw, 21px);
+            line-height: 1.7;
+            color: #f0f0f0;
+
+            text-shadow:
+                0 3px 8px #000,
+                0 0 20px #000;
+        }
+
+        /* BOTÓN PRINCIPAL */
+        .boton-entrar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+
+            margin-top: 14px;
+            padding: 20px 38px;
+
+            background: linear-gradient(135deg, #ff1723, #b9000b);
+            color: white;
+
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 12px;
+
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-decoration: none;
+
+            box-shadow:
+                0 10px 35px rgba(229,9,20,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .boton-entrar:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(135deg, #ff3640, #e50914);
+
+            box-shadow:
+                0 15px 45px rgba(229,9,20,0.65),
+                0 0 30px rgba(229,9,20,0.3);
+        }
+
+        .boton-entrar:active {
+            transform: scale(0.97);
+        }
+
+        .boton-entrar:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 5px;
+        }
+
+        .icono-play {
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 15px solid white;
+        }
+
+        /* INFORMACIÓN INFERIOR */
+        .informacion {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .dato {
+            padding: 10px 17px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 30px;
+            background: rgba(0,0,0,0.38);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            color: #e5e5e5;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ANIMACIONES */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes acercamiento {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.055);
+            }
+        }
+
+        /* ADAPTACIÓN PARA TABLETAS */
+        @media (max-width: 900px) {
+            .portada {
+                padding-top: 200px;
+                padding-bottom: 100px;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+        }
+
+        /* ADAPTACIÓN PARA CELULARES */
+        @media (max-width: 600px) {
+            .portada {
+                padding: 180px 18px 65px;
+            }
+
+            .portada::before {
+                background-position: center center;
+            }
+
+            .portada::after {
+                background: rgba(0,0,0,0.48);
+            }
+
+            .contenido {
+                gap: 19px;
+            }
+
+            .etiqueta {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+
+            h1 {
+                font-size: clamp(34px, 9vw, 50px);
+                letter-spacing: -1px;
+            }
+
+            .descripcion {
+                font-size: 15px;
+            }
+
+            .boton-entrar {
+                width: 100%;
+                max-width: 320px;
+                padding: 18px 20px;
+                font-size: 15px;
+            }
+
+            .informacion {
+                gap: 8px;
+            }
+
+            .dato {
+                font-size: 11px;
+                padding: 8px 11px;
+            }
+        }
+
+        /* ACCESIBILIDAD */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="portada">
+
+        <div class="contenido">
+
+            <p class="etiqueta">
+                UNA EXPERIENCIA CINEMATOGRÁFICA Y LITERARIA
+            </p>
+
+            <h1>
+                GALERÍA DE
+                <span>SUBGÉNEROS</span>
+                NARRATIVOS
+            </h1>
+
+            <div class="linea"></div>
+
+            <p class="descripcion">
+                Adéntrate en ocho universos narrativos
+                y descubre cómo las historias cobran vida
+                a través del cine y la literatura.
+            </p>
+
+            <a href="galeria.html" class="boton-entrar">
+                <span class="icono-play"></span>
+                ENTRAR A LA GALERÍA
+            </a>
+
+            <div class="informacion">
+                <span class="dato">8 Subgéneros</span>
+                <span class="dato">16 Películas</span>
+                <span class="dato">8 Obras literarias</span>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
